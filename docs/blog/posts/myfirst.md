@@ -1,29 +1,13 @@
 ---
 date:
-  created: 2023-12-31
-  updated: 2024-01-02
-readtime: 15
-pin: true
-links:
-  - Homepage: index.md#project-layout
-  - Blog index: blog/index.md
-  - External links:
-    - Material documentation: https://squidfunk.github.io/mkdocs-material
-categories:
-  - Holidays
-tags:
-  - new year
-  - hogmanay
-  - festive season
-authors:
-  - team
-slug: ny-eve
+  created: 2024-12-10
 ---
 
-# Happy new years eve!
+# Begining the Journey
 
-We hope you are all having fun and wish you all the best for the new year!
+It's strange putting all this out there...
 <!-- more -->
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua.
+I know, I know, a blog in 2024 but hear me out.
+
+I do a lot of work in technology and feel like I'm finally at a place where I can share what I have to offer.
