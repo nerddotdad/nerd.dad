@@ -1,4 +1,5 @@
 ---
+comments: true
 date:
   created: 2024-12-10
 ---
