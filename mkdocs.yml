@@ -86,22 +86,7 @@ plugins:
   - mike:
       alias_type: copy
   - tags
-  - macros:
-      module_name: ipesre-modules
-      # on_error_fail: true  # Optional, will make build fail on errors
-      # on_undefined: strict
-      include_yaml:
-        ### services
-        - docs/services/aod/config.yaml
-        - docs/services/cors/config.yaml
-        - docs/services/dataeditor/config.yaml
-        - docs/services/dataloader/config.yaml
-        - docs/services/example/config.yaml
-        - docs/services/ots/config.yaml
-        - docs/services/wta/config.yaml
-        ### user_guides config
-        - docs/developer_guides/release_management/config.yaml
-        - docs/developer_guides/getting_started/config.yaml
+  - macros
   - autorefs:
       resolve_closest: true
   - git-revision-date-localized:
