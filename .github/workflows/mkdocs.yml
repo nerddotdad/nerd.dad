@@ -23,7 +23,7 @@ jobs:
       id-token: write
     steps:
       - name: Deploy MkDocs
-        uses: Reloaded-Project/devops-mkdocs@v1
+        uses: nerddotdad/mkdocs-mike-build-deploy
         with:
           requirements: ./docs/requirements.txt
           publish-to-pages: ${{ github.event_name == 'push' }}
