@@ -14,6 +14,9 @@ on:
       - "docs/**"
 
 jobs:
+  deploy:
+    environment:
+      name: github-pages
   build:
     runs-on: ubuntu-latest
     permissions:
@@ -27,6 +30,3 @@ jobs:
           requirements: ./docs/requirements.txt
           publish-to-pages: ${{ github.event_name == 'push' }}
           checkout-current-repo: true
-  deploy:
-    environment:
-      name: github-pages
