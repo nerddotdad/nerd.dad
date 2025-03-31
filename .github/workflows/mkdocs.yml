@@ -24,13 +24,13 @@ jobs:
         run: |
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
-      - name: Parse Version
-        id: parse
+      - name: Get Commit Message Prefix
+        id: commit_message_prefix
         run: |
           version=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 1)
-          echo $version >> $GITHUB_OUTPUT
+          echo "commit_prefix=$version" >> $GITHUB_OUTPUT
       - name: Test Version
         run: |
-          echo ${{ steps.parse.outputs.version }}
+          echo ${{ steps.commit_message_prefix.outputs.commit_prefix }}
       # - name: Build Docs Website
       #   run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
