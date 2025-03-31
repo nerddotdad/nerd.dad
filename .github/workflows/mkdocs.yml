@@ -61,7 +61,6 @@ jobs:
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
       - name: Build Docs Website
-        run: echo ${{ needs.build_check.outputs.version }}
         run: | 
           mike deploy --push --update-aliases ${{ needs.build_check.outputs.version }} latest
           echo "Build complete for version: ${{ needs.build_check.outputs.version }}" >> $GITHUB_STEP_SUMMARY
