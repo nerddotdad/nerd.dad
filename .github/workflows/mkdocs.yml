@@ -17,13 +17,6 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.10.6
-      - name: Install Dependencies
-        run: |
-          pip install -r docs/requirements.txt
-      - name: Setup Docs Deploy
-        run: |
-          git config --global user.name "Docs Deploy"
-          git config --global user.email "itzteajay@gmail.com"
       - name: Get Commit Message Prefix
         id: commit_message_prefix
         run: |
@@ -31,10 +24,14 @@ jobs:
           version=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 2)
           echo "build_trigger=$trigger" >> $GITHUB_OUTPUT
           echo "commit_prefix=$version" >> $GITHUB_OUTPUT
-      - name: Test Version
-        run: |
-          echo ${{ steps.commit_message_prefix.outputs.build_trigger }}
-          echo ${{ steps.commit_message_prefix.outputs.commit_prefix }}
-      - name: Build Docs Website
+      - name: Build Trigger Check
         if: ${{ contains(steps.commit_message_prefix.outputs.build_trigger, 'build') }}
+      - name: Install Dependencies
+        run: |
+          pip install -r docs/requirements.txt
+      - name: Setup Docs Deploy
+        run: |
+          git config --global user.name "Docs Deploy"
+          git config --global user.email "itzteajay@gmail.com"
+      - name: Build Docs Website
         run: mike deploy --push --update-aliases ${{ steps.commit_message_prefix.outputs.commit_prefix }} latest
