@@ -169,7 +169,7 @@ markdown_extensions:
 ### Example Configuration ###
 
 # Custom Homepage Elements
-home_cover_image: attachments/main/me.png # This path starts at your root mkdocs directory.
+home_cover_image: attachments/main/me_small.png # This path starts at your root mkdocs directory.
 home_tagline: nerd.dad
 home_description: |
   My online space for sharing my passion for Site Reliability Engineering and more.
