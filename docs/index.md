@@ -1,9 +1,5 @@
 ---
-comments: true
-hide:
-  - navigation
-  - toc
+template: home.html
+title: home
 ---
-# Welcome to nerd.dad
-
-A small site/blog for anyone interested in tech
+# Homepage
