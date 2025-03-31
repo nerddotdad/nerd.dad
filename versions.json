@@ -2,9 +2,7 @@
   {
     "version": "echo",
     "title": "echo",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "0.3",
@@ -20,6 +18,13 @@
     "version": "0.1",
     "title": "0.1",
     "aliases": []
+  },
+  {
+    "version": "0.0.1",
+    "title": "0.0.1",
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "v0.0.1",
