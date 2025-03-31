@@ -1,34 +1,27 @@
-name: MkDocs Build and Deploy
+name: Build/Publish Latest Release Docs
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-      - "mkdocs.yml"
-      - "docs/**"
-  pull_request:
-    branches: [ main ]
-    paths:
-      - "mkdocs.yml"
-      - "docs/**"
+  release:
+    types: [published]
 
+permissions:
+  contents: write
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    environment: doc build test
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     steps:
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - name: Deploy MkDocs
-        uses: nerddotdad/mkdocs-mike-build-deploy@v0.0.1
+      - uses: actions/checkout@v3
         with:
-          requirements: ./docs/requirements.txt
-          publish-to-pages: ${{ github.event_name == 'push' }}
-          checkout-current-repo: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.6
+      - name: Install Dependencies
+        run: |
+          pip install -r docs/requirements.txt
+      - name: Setup Docs Deploy
+        run: |
+          git config --global user.name "Docs Deploy"
+          git config --global user.email "docs.deploy@example.co.uk"
+      - name: Build Docs Website
+        run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
