@@ -27,10 +27,14 @@ jobs:
       - name: Get Commit Message Prefix
         id: commit_message_prefix
         run: |
-          version=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 1)
+          trigger=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 1)
+          version=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 2)
+          echo "build_trigger=$trigger" >> $GITHUB_OUTPUT
           echo "commit_prefix=$version" >> $GITHUB_OUTPUT
       - name: Test Version
         run: |
+          echo ${{ steps.commit_message_prefix.outputs.build_trigger }}
           echo ${{ steps.commit_message_prefix.outputs.commit_prefix }}
-      # - name: Build Docs Website
-      #   run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
+      - name: Build Docs Website
+        if: ${{ contains(steps.commit_message_prefix.outputs.build_trigger, 'build') }}
+        run: mike deploy --push --update-aliases ${{ steps.commit_message_prefix.outputs.commit_prefix }} latest
