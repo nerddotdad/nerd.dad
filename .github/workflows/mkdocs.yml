@@ -26,14 +26,20 @@ jobs:
         run: |
           if [ ${{ steps.commit_message_prefix.outputs.build_trigger }} == "build" ]
           then
-            exit 0
+            echo "build"
           else
-            exit 1
+            echo "cancel"
           fi
-
+  graceful_cancel:
+    needs: build_check
+    if: needs.build_check.outputs.status == 'cancel'
+    steps:
+      - name: Graceful Cancel
+        run: |
+          echo "No build triggered"
   deploy:
     needs: build_check
-    if: needs.build_check.outputs.status == 'success'
+    if: needs.build_check.outputs.status == 'build'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
