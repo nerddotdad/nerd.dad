@@ -26,7 +26,11 @@ jobs:
           git config --global user.email "itzteajay@gmail.com"
       - name: Parse Version
         env: 
-          version: echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 1
-        run: echo "$version"
+          commit_message: echo "${{ github.event.head_commit.message }}"
+        id: parse
+        run: echo "version=$(echo "$commit_message" | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+      - name: Test Version
+        run: |
+          echo ${{ steps.split.outputs.version }}
       # - name: Build Docs Website
       #   run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
