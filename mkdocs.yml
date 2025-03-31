@@ -51,7 +51,6 @@ theme:
     - search.share
     - header.autohide
     - navigation.footer
-    - content.action.edit
     - content.action.view
     - announce.dismiss
     - content.code.select
@@ -71,9 +70,9 @@ plugins:
       type: date
       enable_creation_date: true
       fallback_to_build_date: true
-  # - git-committers:
-  #     repository: nerddotdad/nerd.dad
-  #     branch: main
+  - git-committers:
+      repository: nerddotdad/nerd.dad
+      branch: main
   # - termynal: # Really promosing plugin but at this time it does not play well. https://termynal.github.io/termynal.py/
   #     title: bash
   #     buttons: macos

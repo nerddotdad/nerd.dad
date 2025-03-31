@@ -3,7 +3,7 @@ mike
 mkdocs-macros-plugin
 mkdocs-autorefs
 mkdocs-git-revision-date-localized-plugin
-mkdocs-git-committers-plugin
+mkdocs-git-committers-plugin-2
 mkdocs-git-authors-plugin
 mkdocs_github_changelog
 macros
