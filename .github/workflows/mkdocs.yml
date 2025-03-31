@@ -8,15 +8,11 @@ on:
 permissions:
   contents: write
 jobs:
-  deploy:
+  build_check:
+    outputs: 
+      status: ${{ steps.build_trigger_check.conclusion }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.10.6
       - name: Get Commit Message Prefix
         id: commit_message_prefix
         run: |
@@ -25,10 +21,27 @@ jobs:
           echo "build_trigger=$trigger" >> $GITHUB_OUTPUT
           echo "commit_prefix=$version" >> $GITHUB_OUTPUT
       - name: Build Trigger Check
-        if: "!contains(steps.commit_message_prefix.outputs.build_trigger, 'build')"
+        id: build_trigger_check
+        if: ${{ ! contains(steps.commit_message_prefix.outputs.build_trigger, 'build') }}
         run: |
-          echo "keyword 'build' found as first word in commit message"
-          exit 0
+          if [ ${{ steps.commit_message_prefix.outputs.build_trigger }} == "build" ]
+          then
+            exit 0
+          else
+            exit 1
+          fi
+
+  deploy:
+    needs: build_check
+    if: needs.build_check.outputs.status == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.6
       - name: Install Dependencies
         run: |
           pip install -r docs/requirements.txt
