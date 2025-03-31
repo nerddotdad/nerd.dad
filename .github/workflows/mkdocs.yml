@@ -25,6 +25,8 @@ jobs:
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
       - name: Parse Version
-        run: echo "${{ github.event.head_commit.message }}"
+        env: 
+          version: echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 1
+        run: echo "$version"
       # - name: Build Docs Website
       #   run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
