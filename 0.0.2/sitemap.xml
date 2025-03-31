@@ -16,4 +16,16 @@
          <loc>https://nerd.dad/0.0.2/blog/</loc>
          <lastmod>2025-03-31</lastmod>
     </url>
+    <url>
+         <loc>https://nerd.dad/0.0.2/blog/2025/03/31/cicd-for-this-site/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/0.0.2/blog/archive/2025/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/0.0.2/blog/category/nerd-dad-site/</loc>
+         <lastmod>2025-03-31</lastmod>
+    </url>
 </urlset>
