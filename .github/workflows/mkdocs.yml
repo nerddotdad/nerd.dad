@@ -10,6 +10,9 @@ permissions:
 jobs:
   build_check:
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.commit_message_prefix.outputs.version }}
+      build_docs: ${{ steps.build_trigger_check.outputs.build_docs }}
     steps:
       - name: Get Commit Message Prefix
         id: commit_message_prefix
@@ -17,22 +20,22 @@ jobs:
           trigger=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 1)
           version=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 2)
           echo "build_trigger=$trigger" >> $GITHUB_OUTPUT
-          echo "commit_prefix=$version" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
       - name: Build Trigger Check
         id: build_trigger_check
         run: |
           if [ ${{ steps.commit_message_prefix.outputs.build_trigger }} == "build" ]
           then
             echo "Trigger word found" >> $GITHUB_STEP_SUMMARY
-            echo "BUILD_DOCS=true" >> $GITHUB_OUTPUT
+            echo "build_docs=true" >> $GITHUB_OUTPUT
           else
             echo "Trigger word not found" >> $GITHUB_STEP_SUMMARY
-            echo "BUILD_DOCS=false" >> $GITHUB_OUTPUT
+            echo "build_docs=false" >> $GITHUB_OUTPUT
           fi
 
   graceful_cancel:
     needs: build_check
-    if: ${{ jobs.build_check.steps[*].build_trigger_check.BUILD_DOCS == 'false' }}
+    if: ${{ needs.build_check.outputs.build_docs == 'false' }}
     runs-on: ubuntu-latest
     steps:
       - name: Build Skip
@@ -41,7 +44,7 @@ jobs:
 
   deploy:
     needs: build_check
-    if: ${{ jobs.build_check.steps[*].build_trigger_check.BUILD_DOCS == 'true' }}
+    if: ${{ needs.build_check.outputs.build_docs == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -58,7 +61,7 @@ jobs:
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
       - name: Build Docs Website
-        run: echo ${{ jobs.build_check.steps[*].commit_message_prefix.outputs.commit_prefix }}
+        run: echo ${{ needs.build_check.outputs.version }}
         # run: | 
         #   mike deploy --push --update-aliases ${{ jobs.build_check.steps[*].commit_message_prefix.outputs.commit_prefix }} latest
         #   echo "Build complete for version: ${{ jobs.build_check.steps[*].commit_message_prefix.outputs.commit_prefix }}" >> $GITHUB_STEP_SUMMARY
