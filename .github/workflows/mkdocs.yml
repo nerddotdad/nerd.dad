@@ -1,8 +1,9 @@
 name: Build/Publish Latest Release Docs
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -23,5 +24,7 @@ jobs:
         run: |
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
-      - name: Build Docs Website
-        run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest
+      - name: Parse Version
+        run: ${{ github.event.push.commits.message }}
+      # - name: Build Docs Website
+      #   run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} latest

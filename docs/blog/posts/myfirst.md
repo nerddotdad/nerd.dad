@@ -1,7 +1,10 @@
 ---
 comments: true
 date:
-  created: 2024-12-10
+  created: 2025-03-30
+draft: true
+categories:
+  - Life
 ---
 
 # Begining the Journey
