@@ -1,5 +1,7 @@
 ---
 template: home.html
-title: home
+title: Home
+hide:
+  - footer
 ---
-# Homepage
+# Home
