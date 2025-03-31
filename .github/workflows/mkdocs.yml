@@ -9,8 +9,7 @@ permissions:
   contents: write
 jobs:
   build_check:
-    outputs: 
-      status: ${{ steps.build_trigger_check.conclusion }}
+    id: build_check
     runs-on: ubuntu-latest
     steps:
       - name: Get Commit Message Prefix
@@ -26,15 +25,24 @@ jobs:
           if [ ${{ steps.commit_message_prefix.outputs.build_trigger }} == "build" ]
           then
             echo "Trigger word found" >> $GITHUB_STEP_SUMMARY
-            echo "build"
+            echo "BUILD_DOCS=true" >> $GITHUB_OUTPUT
           else
             echo "Trigger word not found" >> $GITHUB_STEP_SUMMARY
-            echo "cancel"
+            echo "BUILD_DOCS=false" >> $GITHUB_OUTPUT
           fi
-  
+
+  graceful_cancel:
+    needs: build_check
+    if: ${{ jobs.build_check.steps[*].build_trigger_check.BUILD_DOCS == 'false' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Skip
+        run: |
+          echo "Skipping Build" >> $GITHUB_STEP_SUMMARY
+
   deploy:
     needs: build_check
-    if: needs.build_check.outputs.status == 'build'
+    if: ${{ jobs.build_check.steps[*].build_trigger_check.BUILD_DOCS == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -51,6 +59,7 @@ jobs:
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
       - name: Build Docs Website
-        run: | 
-          mike deploy --push --update-aliases ${{ steps.commit_message_prefix.outputs.commit_prefix }} latest
-          echo "Build complete for version: ${{ steps.commit_message_prefix.outputs.commit_prefix }}" >> $GITHUB_STEP_SUMMARY
+        run: echo ${{ jobs.build_check.steps[*].commit_message_prefix.outputs.commit_prefix }}
+        # run: | 
+        #   mike deploy --push --update-aliases ${{ jobs.build_check.steps[*].commit_message_prefix.outputs.commit_prefix }} latest
+        #   echo "Build complete for version: ${{ jobs.build_check.steps[*].commit_message_prefix.outputs.commit_prefix }}" >> $GITHUB_STEP_SUMMARY
