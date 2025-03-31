@@ -80,7 +80,7 @@ plugins:
   #     prompt_literal_start:
   #       - "$"
   - mike:
-      alias_type: copy
+      alias_type: symlink
   - tags
   - macros
   - autorefs:
