@@ -25,9 +25,10 @@ jobs:
           echo "build_trigger=$trigger" >> $GITHUB_OUTPUT
           echo "commit_prefix=$version" >> $GITHUB_OUTPUT
       - name: Build Trigger Check
-        if: ${{ contains(steps.commit_message_prefix.outputs.build_trigger, 'build') }}
+        if: "!contains(steps.commit_message_prefix.outputs.build_trigger, 'build')"
         run: |
           echo "keyword 'build' found as first word in commit message"
+          exit 0
       - name: Install Dependencies
         run: |
           pip install -r docs/requirements.txt
