@@ -6,4 +6,4 @@ hide:
 ---
 # Welcome to nerd.dad
 
-A small site/blog for anyone interested in tech!
+A small site/blog for anyone interested in tech

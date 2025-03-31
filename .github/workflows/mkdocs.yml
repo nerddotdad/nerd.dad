@@ -22,7 +22,6 @@ jobs:
           echo "commit_prefix=$version" >> $GITHUB_OUTPUT
       - name: Build Trigger Check
         id: build_trigger_check
-        if: ${{ ! contains(steps.commit_message_prefix.outputs.build_trigger, 'build') }}
         run: |
           if [ ${{ steps.commit_message_prefix.outputs.build_trigger }} == "build" ]
           then
