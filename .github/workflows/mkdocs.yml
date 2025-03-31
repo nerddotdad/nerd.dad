@@ -9,7 +9,6 @@ permissions:
   contents: write
 jobs:
   build_check:
-    id: build_check
     runs-on: ubuntu-latest
     steps:
       - name: Get Commit Message Prefix
