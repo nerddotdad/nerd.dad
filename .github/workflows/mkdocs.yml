@@ -25,10 +25,10 @@ jobs:
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
       - name: Parse Version
-        env: 
-          commit_message: echo "${{ github.event.head_commit.message }}"
         id: parse
-        run: echo "version=$(echo "$commit_message" | cut -d ' ' -f 1)" >> $GITHUB_OUTPUT
+        run: |
+          version=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 1)
+          echo $version >> $GITHUB_OUTPUT
       - name: Test Version
         run: |
           echo ${{ steps.parse.outputs.version }}
