@@ -1,4 +1,4 @@
-name: Build/Publish Latest Release Docs
+name: Build/Generate Site With Mike
 
 on:
   push:
