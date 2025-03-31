@@ -1,1 +1,0 @@
-{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"Welcome to nerd.dad","text":"<p>A small site/blog for anyone interested in tech!</p>"},{"location":"blog/","title":"Posts","text":"<p>this is a bloggy thing</p>"}]}
