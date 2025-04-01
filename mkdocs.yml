@@ -17,8 +17,10 @@ theme:
   custom_dir: overrides
   palette:
     # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
+    - media: "(prefers-color-scheme: test)"
+      scheme: test
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
@@ -26,6 +28,8 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -57,6 +61,11 @@ theme:
     - content.code.copy
     - content.code.annotate
     - content.tooltips
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
 
 watch:
   - overrides
@@ -98,6 +107,19 @@ plugins:
       enabled: true
       enabled_on_serve: true
 #      strict: true
+  - spellcheck:
+      backends:  # the backends you want to use
+        - codespell:  # or nested configs
+            dictionaries: [clear, rare]
+      known_words: known_words.txt
+      ignore_code: yes
+      min_length: 2
+      max_capital: 1
+      allow_unicode: no
+      skip_files:
+      - credits.md
+      - coverage.md
+      - reference/*
 
 extra:
   version:
@@ -199,25 +221,27 @@ home_button3_icon: image      # Options: "people", "gear", "image"
 home_button3_blurb: |         # Short description of this button / section.
   Head over to my blog
 
-home_button4_name: Being a Dad   # Comment this parameter out to remove the button.
-# home_button4_url: blog/index.md    # This path starts at your root mkdocs directory.
-# home_button4_theme: md-button # Options: "md-button", "md-button md-button--primary"
-home_button4_icon: image      # Options: "people", "gear", "image"
-home_button4_blurb: |         # Short description of this button / section.
+# Custom Homepage Panel(s)
+
+home_panel1_icon: image      # Options: "people", "gear", "image"
+home_panel1_title: Being a Dad   # Comment this parameter out to remove the button.
+# home_panel1_url: blog/index.md    # This path starts at your root mkdocs directory.
+# home_panel1_theme: md-button # Options: "md-button", "md-button md-button--primary"
+home_panel1_blurb: |         # Short description of this button / section.
   Dirty Diapers<br>Shows on Repeat<br>Coffee Addiction
 
-home_button5_name: Being a Nerd   # Comment this parameter out to remove the button.
-# home_button5_url: blog/index.md    # This path starts at your root mkdocs directory.
-# home_button5_theme: md-button # Options: "md-button", "md-button md-button--primary"
-home_button5_icon: image      # Options: "people", "gear", "image"
-home_button5_blurb: |         # Short description of this button / section.
+home_panel2_icon: image      # Options: "people", "gear", "image"
+home_panel2_title: Being a Nerd   # Comment this parameter out to remove the button.
+# home_panel2_url: blog/index.md    # This path starts at your root mkdocs directory.
+# home_panel2_theme: md-button # Options: "md-button", "md-button md-button--primary"
+home_panel2_blurb: |         # Short description of this button / section.
   Site Reliability Engineer<br>System Administration<br>Development
 
-home_button6_name: Being a Nerd Dad   # Comment this parameter out to remove the button.
-# home_button6_url: blog/index.md    # This path starts at your root mkdocs directory.
-# home_button6_theme: md-button # Options: "md-button", "md-button md-button--primary"
-home_button6_icon: test      # Options: "people", "gear", "image"
-home_button6_blurb: |         # Short description of this button / section.
+home_panel3_icon: test      # Options: "people", "gear", "image"
+home_panel3_title: Being a Nerd Dad   # Comment this parameter out to remove the button.
+# home_panel3_url: blog/index.md    # This path starts at your root mkdocs directory.
+# home_panel3_theme: md-button # Options: "md-button", "md-button md-button--primary"
+home_panel3_blurb: |         # Short description of this button / section.
   Let's get our kiddos involved!<br>Sharing what we're excited about is one of the best parts of being a dad!
 
 # Homepage Code Execution

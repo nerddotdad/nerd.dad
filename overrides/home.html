@@ -18,8 +18,8 @@
 
     .tx-container {
         display: table;
+        background: linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-primary-fg-color--light) 100%);
         padding-top: .0rem;
-        background: linear-gradient(to bottom, var(--md-primary-fg-color), {{ config.home_gradient_hsla }} 99%);
         height: 100vh;
     }
 
@@ -88,7 +88,7 @@
     }
 
     .feature-item h2 {
-        color: #333;
+        color: var(--md-primary-fg-color);
         font-weight: 300;
         font-size: 100px;
         white-space: nowrap;
@@ -101,7 +101,7 @@
     }
 
     .feature-item h3 {
-        color: #444;
+        color: var(--md-primary-fg-color);
         font-weight: 300;
         font-size: 25px;
         white-space: nowrap;
@@ -118,7 +118,7 @@
         line-height: 1.8em;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
-        color: #111;
+        color: var(--md-primary-fg-color);
         margin: 0 0 10px;
         display: block;
     }
@@ -274,34 +274,34 @@
       <div class="top-hr">
         
         <!-- Start Outer Condition -->
-        {%- if config.home_button4_name -%}
+        {%- if config.home_panel1_title -%}
         <div class="feature-item">
             <!-- Image Icon -->
             <h2><i class="fa-solid fa-people-pulling"></i></h2>
-            <h3>{{ config.home_button4_name }}</h3>
-            <p>{{ config.home_button4_blurb }}</p>
+            <h3>{{ config.home_panel1_title }}</h3>
+            <p>{{ config.home_panel1_blurb }}</p>
         </div>
         {%- endif -%}
         <!-- End Outer Condition -->
         
         <!-- Start Outer Condition -->
-        {%- if config.home_button5_name -%}
+        {%- if config.home_panel2_title -%}
         <div class="feature-item">
             <!-- Image Icon -->
             <h2><i class="fa-solid fa-glasses"></i></h2>
-            <h3>{{ config.home_button5_name }}</h3>
-            <p>{{ config.home_button5_blurb }}</p>
+            <h3>{{ config.home_panel2_title }}</h3>
+            <p>{{ config.home_panel2_blurb }}</p>
         </div>
         {%- endif -%}
         <!-- End Outer Condition -->
 
         <!-- Start Outer Condition -->
-        {%- if config.home_button6_name -%}
+        {%- if config.home_panel3_title -%}
         <div class="feature-item">
             <!-- Image Icon -->
             <h2><i class="fa-solid fa-person-falling-burst"></i></h2>
-            <h3>{{ config.home_button6_name }}</h3>
-            <p>{{ config.home_button6_blurb }}</p>
+            <h3>{{ config.home_panel3_title }}</h3>
+            <p>{{ config.home_panel3_blurb }}</p>
         </div>
         {%- endif -%}
         <!-- End Outer Condition -->
