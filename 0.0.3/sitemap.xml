@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://nerd.dad/0.0.3/</loc>
+         <lastmod>2025-04-01</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/0.0.3/about_me/</loc>
+         <lastmod>2025-04-01</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/0.0.3/podcast/</loc>
+         <lastmod>2025-04-01</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/0.0.3/blog/</loc>
+         <lastmod>2025-04-01</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/0.0.3/blog/2025/03/31/cicd-for-this-site/</loc>
+         <lastmod>2025-04-01</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/0.0.3/blog/archive/2025/</loc>
+         <lastmod>2025-04-01</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/0.0.3/blog/category/nerd-dad-site/</loc>
+         <lastmod>2025-04-01</lastmod>
+    </url>
+</urlset>
