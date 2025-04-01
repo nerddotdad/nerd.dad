@@ -107,19 +107,6 @@ plugins:
       enabled: true
       enabled_on_serve: true
 #      strict: true
-  - spellcheck:
-      backends:  # the backends you want to use
-        - codespell:  # or nested configs
-            dictionaries: [clear, rare]
-      known_words: known_words.txt
-      ignore_code: yes
-      min_length: 2
-      max_capital: 1
-      allow_unicode: no
-      skip_files:
-      - credits.md
-      - coverage.md
-      - reference/*
 
 extra:
   version:
