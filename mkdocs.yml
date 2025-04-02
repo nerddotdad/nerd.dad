@@ -75,7 +75,7 @@ plugins:
   - search
   - blog
 
-  - amazon-polly-tts:
+  - tts-amazon-polly:
       output_dir: "audio"
       voice_id: "Joanna"
 
