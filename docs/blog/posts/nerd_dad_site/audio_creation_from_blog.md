@@ -19,4 +19,4 @@ ChatGPT got me started here but after some debugging and disecting I got it work
 
 [mkdocs-tts-amazon-polly](https://github.com/nerddotdad/mkdocs-tts-amazon-polly)
 
-Let me know what you think in the comments below!
+Let me know what you think in the comments below! Also using this blog to test :P
