@@ -17,5 +17,4 @@ dotenv
 jq
 mkdocs
 boto3
-awscli
 git+https://github.com/nerddotdad/mkdocs-tts-amazon-polly.git
