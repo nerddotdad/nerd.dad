@@ -27,6 +27,7 @@ jobs:
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
 
   build_check:
+    needs: configure_aws
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.commit_message_prefix.outputs.version }}
