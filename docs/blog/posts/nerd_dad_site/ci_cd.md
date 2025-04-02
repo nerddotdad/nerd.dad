@@ -1,5 +1,6 @@
 ---
 comments: true
+generate_audio: true
 date:
   created: 2025-03-31
 draft: false
@@ -8,7 +9,9 @@ categories:
 ---
 # CI/CD for this site
 
-This has been quite a day. Along with working on-call I decided I would take on the CI/CD pipeline for automatic site builds.
+This has been quite a day.
+<!-- more -->
+Along with working on-call I decided I would take on the CI/CD pipeline for automatic site builds.
 
 It's using github actions and while I'm still new to a lot of this I know enough to be dangerous.
 

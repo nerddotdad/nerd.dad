@@ -62,6 +62,7 @@ theme:
     - content.code.annotate
     - content.tooltips
 
+
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
@@ -73,6 +74,11 @@ watch:
 plugins:
   - search
   - blog
+
+  - amazon-polly-tts:
+      output_dir: "audio"
+      voice_id: "Joanna"
+
   # - include_dir_to_nav
   # - mkdocs_github_changelog
   - git-revision-date-localized:
@@ -109,6 +115,7 @@ plugins:
 #      strict: true
 
 extra:
+  audio_dir: "audio"
   version:
     provider: mike
     default: latest

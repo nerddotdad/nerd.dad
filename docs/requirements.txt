@@ -15,3 +15,6 @@ mkdocs-include-dir-to-nav
 modules
 dotenv
 jq
+mkdocs
+boto3
+git+https://github.com/nerddotdad/mkdocs-tts-amazon-polly.git

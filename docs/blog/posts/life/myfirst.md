@@ -1,5 +1,6 @@
 ---
 comments: true
+generate_audio: true
 date:
   created: 2025-03-30
 draft: true
