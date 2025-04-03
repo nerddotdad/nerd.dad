@@ -1,4 +1,5 @@
 <!-- Elements added to "home.html" will only be displayed on the home page -->
+<!-- Project for this page found here: https://github.com/tylerdotrar/mkdocs-coverpage -->
 
 {% extends "main.html" %}
 {% block tabs %}
@@ -129,16 +130,17 @@
     }
 
     @media screen and (max-width:30em) {
+        .md-main__inner {
+            display: flex;
+            flex-direction: column;
+        }
+
         .tx-hero h1 {
             font-size: 1.4rem
         }
     }
 
     @media screen and (min-width:60em) {
-        .md-sidebar--secondary {
-            display: none
-        }
-
         .tx-hero {
             display: flex;
             align-items: center;
@@ -152,6 +154,12 @@
             margin-left: 1.0rem;
             margin-right: 4.0rem;
             align-items: center;
+        }
+    }
+
+    @media screen and (max-width:76.25em) {
+        .md-main__inner {
+        display: flex;
         }
     }
 
@@ -322,8 +330,6 @@
     </div>
     </div>
 </section>
-
-
 
 <!-- Toggleable JavaScript execution -->
 {%- if config.home_execute_js -%}
