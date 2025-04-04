@@ -5,7 +5,7 @@ date:
     created: 2025-04-03
 draft: false
 categories:
-    - projects
+    - Projects
 tags:
     - ai
 ---
