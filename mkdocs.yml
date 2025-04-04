@@ -71,6 +71,7 @@ extra_javascript:
 
 watch:
   - overrides
+  - includes
 
 plugins:
   - search
@@ -178,9 +179,8 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.snippets:
-      base_path: ['docs']
       auto_append:
-        - ref/admin/abbreviations.
+        - includes/abbreviations.md
         
 
 ### Example Configuration ###
