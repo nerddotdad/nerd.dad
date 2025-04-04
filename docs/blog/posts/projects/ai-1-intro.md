@@ -42,3 +42,5 @@ Would you like to start with setting up the Kubernetes cluster or the AI model?
 ## Conclusion
 
 Wish me luck!!! This is going to be one hell of an adventure!
+
+## Share
