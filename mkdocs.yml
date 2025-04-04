@@ -6,9 +6,8 @@ repo_url: https://github.com/nerddotdad/nerd.dad
 repo_name: nerddotdad/nerd.dad
 edit_uri: edit/main/docs/
 
-nav:
-  - Home: index.md
-  - Blog: blog/index.md
+# nav:
+#   - Home: index.md
 
 theme:
   name: material
@@ -16,8 +15,8 @@ theme:
   custom_dir: overrides
   palette:
     # Palette toggle for light mode
-    - media: "(prefers-color-scheme: test)"
-      scheme: test
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: custom
       accent: custom
       toggle:

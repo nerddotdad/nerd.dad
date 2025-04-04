@@ -19,14 +19,14 @@
 
     .tx-container {
         display: table;
-        background: linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-primary-fg-color--light) 100%);
+        background: linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-primary-fg-color-light) 100%);
         padding-top: .0rem;
         height: 100vh;
     }
 
     .tx-hero {
         margin: 32px 2.8rem;
-        color: var(--md-primary-bg-color);
+        color: var(--md-primary-fg-color-lightest);
         justify-content: center;
     }
 
@@ -74,7 +74,7 @@
     .tx-hero .md-button:focus,
     .tx-hero .md-button:hover {
         background-color: var(--md-accent-fg-color);
-        color: var(--md-default-bg-color);
+        color: var(--md-primary-fg-color);
         border-color: var(--md-accent-fg-color)
     }
 
@@ -88,6 +88,7 @@
 	    margin-top: .5rem;
         margin-right: .5rem;
         margin-left: .5rem;
+        margin-bottom: 1rem;
 	    background-color: var(--md-primary-bg-color);
         font-family: 'Lato', sans-serif;
         font-weight: 300;
@@ -201,8 +202,9 @@
         }
 
         .feature-item:hover {
-            background-color: #526cfe47;
-            border-radius: 3px;
+            background-color: var(--md-accent-fg-color);
+            color: var(--md-primary-fg-color);
+            border-color: var(--md-accent-fg-color)
         }
     }
 
