@@ -349,6 +349,8 @@
     }
 
     .tx-hero .md-button {
+        display: inline-flex;
+        flex-direction: row;
         margin-top: .5rem;
         margin-right: .5rem;
         color: var(--md-primary-bg-color)
@@ -356,7 +358,7 @@
 
     .tx-hero .md-button--primary {
         background-color: var(--md-primary-bg-color);
-        color: hsla(280deg, 37%, 48%, 1);
+        color: rgb(77, 154, 168);
         border-color: var(--md-primary-bg-color)
     }
 
@@ -376,6 +378,7 @@
 	    border-radius: 20px;
 	    margin-top: .5rem;
         margin-right: .5rem;
+        margin-left: .5rem;
 	    background-color: var(--md-primary-bg-color);
         font-family: 'Lato', sans-serif;
         font-weight: 300;
@@ -457,6 +460,11 @@
     @media screen and (min-width:76.25em) {
         .md-sidebar--primary {
             display: none
+        }
+
+        .tx-hero .md-button {
+        display: flex;
+        flex-direction: column;
         }
 
         .top-hr {
