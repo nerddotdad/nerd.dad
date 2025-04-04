@@ -7,10 +7,8 @@ repo_name: nerddotdad/nerd.dad
 edit_uri: edit/main/docs/
 
 nav:
-  - Section:
-    - Home: index.md
-    - Blog: 
-      - blog/index.md
+  - Home: index.md
+  - Blog: blog/index.md
 
 theme:
   name: material
@@ -196,13 +194,13 @@ home_description: |
 # Gradient Color
 home_gradient_hsla: hsla(0deg,47%,55%,1) # Default Green: hsla(160deg,47%,55%,1)
 
-# Custom Homepage Button(s)
-home_button1_name: About Me                  # Comment this parameter out to remove the button.
-home_button1_url: about_me                      # This path starts at your root mkdocs directory.
-home_button1_theme: md-button md-button--primary # Options: "md-button", "md-button md-button--primary"
-home_button1_icon: people                        # Options: "people", "gear", "image"
-home_button1_blurb: |                            # Short description of this button / section.
-  About Me
+# # Custom Homepage Button(s)
+# home_button1_name: About Me                  # Comment this parameter out to remove the button.
+# home_button1_url: about_me                      # This path starts at your root mkdocs directory.
+# home_button1_theme: md-button md-button--primary # Options: "md-button", "md-button md-button--primary"
+# home_button1_icon: people                        # Options: "people", "gear", "image"
+# home_button1_blurb: |                            # Short description of this button / section.
+#   About Me
 
 home_button2_name: My Podcast   # Comment this parameter out to remove the button.
 home_button2_url: podcast    # This path starts at your root mkdocs directory.
