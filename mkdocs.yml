@@ -6,11 +6,11 @@ repo_url: https://github.com/nerddotdad/nerd.dad
 repo_name: nerddotdad/nerd.dad
 edit_uri: edit/main/docs/
 
-## Nav is placeholder for now
-# nav:
-#   - Section:
-#     - section/index.md 
-#     - Page n: section/page-n.md
+nav:
+  - Section:
+    - Home: index.md
+    - Blog: 
+      - blog/index.md
 
 theme:
   name: material
@@ -75,7 +75,8 @@ watch:
 
 plugins:
   - search
-  - blog
+  - blog:
+      pagination_per_page: 5
 
   - tts-amazon-polly:
       output_dir: "audio"
