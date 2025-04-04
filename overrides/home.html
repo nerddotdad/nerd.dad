@@ -8,7 +8,6 @@
 <!-- Stole this styling from the "up42-py" project (link: https://sdk.up42.com/) -->
 <!-- .tx-container Original Green Gradient: hsla(160deg,47%,55%,1) -->
 <style>
-
     .md-main {
         flex-grow: 0
     }
@@ -41,14 +40,14 @@
         margin: 0 auto;
     }
 
-    .tx-hero__image{
-        width:17rem;
-        height:17rem;
-        order:1;
+    .tx-hero__image {
+        width: 17rem;
+        height: 17rem;
+        order: 1;
         padding-right: 2.5rem;
     }
 
-    .tx-hero__img{
+    .tx-hero__img {
         border-radius: 50%;
     }
 
@@ -59,23 +58,47 @@
 
     .tx-hero .md-button {
         display: inline-flex;
-        flex-direction: row;
+        flex-direction: column;
+        width: 100%;
         margin-top: .5rem;
         margin-right: .5rem;
-        color: var(--md-primary-bg-color)
+        background-color: var(--md-default-bg-color--light);
+        border-color: var(--md-default-bg-color--light);
+        transition: all 0.5s;
+        cursor: pointer;
+    }
+
+    .tx-hero .md-button span {
+        display: inline-flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .tx-hero .md-button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0.25;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
     }
 
     .tx-hero .md-button--primary {
-        background-color: var(--md-primary-bg-color);
-        color: rgb(77, 154, 168);
-        border-color: var(--md-primary-bg-color)
+        background-color: var(--md-primary-fg-color);
+        border-color: var(--md-default-bg-color--light);
     }
 
-    .tx-hero .md-button:focus,
-    .tx-hero .md-button:hover {
-        background-color: var(--md-accent-fg-color);
-        color: var(--md-primary-fg-color);
-        border-color: var(--md-accent-fg-color)
+    .tx-hero .md-button:focus span,
+    .tx-hero .md-button:hover span {
+        padding-right: 25px;
+    }
+
+    .tx-hero .md-button:focus span:after,
+    .tx-hero .md-button:hover span:after {
+        opacity: 1;
+        right: 0;
     }
 
     .top-hr {
@@ -83,13 +106,13 @@
     }
 
     .feature-item {
-        text-align: center ;
-	    border-radius: 20px;
-	    margin-top: .5rem;
+        text-align: center;
+        border-radius: 20px;
+        margin-top: .5rem;
         margin-right: .5rem;
         margin-left: .5rem;
         margin-bottom: 1rem;
-	    background-color: var(--md-primary-bg-color);
+        background-color: var(--md-primary-bg-color);
         font-family: 'Lato', sans-serif;
         font-weight: 300;
         box-sizing: border-box;
@@ -163,7 +186,7 @@
 
     @media screen and (max-width:76.25em) {
         .md-main__inner {
-        display: flex;
+            display: flex;
         }
     }
 
@@ -173,8 +196,8 @@
         }
 
         .tx-hero .md-button {
-        display: flex;
-        flex-direction: column;
+            display: flex;
+            flex-direction: column;
         }
 
         .top-hr {
@@ -262,92 +285,86 @@
 <!-- Main site entry button descriptions -->
 <section class="tx-container">
     <div class="md-grid md-typeset">
-      <div class="tx-hero">
-      
-        <!-- Custom Image -->
-        <div class="tx-hero__image">
-	  <img src="{{ config.home_cover_image }}" class="tx-hero__img" draggable="false">
-        </div>
-	
-	<!-- Main Tagline -->
-        <div class="tx-hero__content">
-          <h1>{{ config.home_tagline }}</h1>
-          <p>{{ config.home_description }}</p>
-	  
-	  <!-- Added Buttons (up to 3) -->
-          {%- if config.home_button1_name -%}
-          <a href="{{ config.home_button1_url }}" title="Material | MkDocs" class="{{ config.home_button1_theme }}">
-            {{ config.home_button1_name }}
-          </a>
-	  {%- endif -%}
-	  
-          {%- if config.home_button2_name -%}
-          <a href="{{ config.home_button2_url }}" title="Material | MkDocs" class="{{ config.home_button2_theme }}">
-            {{ config.home_button2_name }}
-          </a>
-	  {%- endif -%}
-	  
-	  {%- if config.home_button3_name -%}
-          <a href="{{ config.home_button3_url }}" title="Material | MkDocs" class="{{ config.home_button3_theme }}">
-            {{ config.home_button3_name }}
-          </a>
-	  {%- endif -%}
-        <div class="tx-hero__gh-build">
-            <a href="https://github.com/nerddotdad/nerd.dad/actions/workflows/mike_build.yml">
-                <img src="https://github.com/nerddotdad/nerd.dad/actions/workflows/mike_build.yml/badge.svg?branch=main">
-            </a>
-            <br>
-            <a href="https://github.com/nerddotdad/nerd.dad/actions/workflows/pages/pages-build-deployment">
-                <img src="https://github.com/nerddotdad/nerd.dad/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages">
-            </a>
-        </div>
-    </div>
-      </div>
-      <div class="top-hr">
-        
-        <!-- Start Outer Condition -->
-        {%- if config.home_panel1_title -%}
-        <div class="feature-item">
-            <!-- Image Icon -->
-            <h2><i class="fa-solid fa-people-pulling"></i></h2>
-            <h3>{{ config.home_panel1_title }}</h3>
-            <p>{{ config.home_panel1_blurb }}</p>
-        </div>
-        {%- endif -%}
-        <!-- End Outer Condition -->
-        
-        <!-- Start Outer Condition -->
-        {%- if config.home_panel2_title -%}
-        <div class="feature-item">
-            <!-- Image Icon -->
-            <h2><i class="fa-solid fa-glasses"></i></h2>
-            <h3>{{ config.home_panel2_title }}</h3>
-            <p>{{ config.home_panel2_blurb }}</p>
-        </div>
-        {%- endif -%}
-        <!-- End Outer Condition -->
+        <div class="tx-hero">
+            <!-- Custom Image -->
+            <div class="tx-hero__image">
+                <img src="{{ config.home_cover_image }}" class="tx-hero__img" draggable="false">
+            </div>
 
-        <!-- Start Outer Condition -->
-        {%- if config.home_panel3_title -%}
-        <div class="feature-item">
-            <!-- Image Icon -->
-            <h2><i class="fa-solid fa-person-falling-burst"></i></h2>
-            <h3>{{ config.home_panel3_title }}</h3>
-            <p>{{ config.home_panel3_blurb }}</p>
+            <!-- Main Tagline -->
+            <div class="tx-hero__content">
+                <h1>{{ config.home_tagline }}</h1>
+                <p>{{ config.home_description }}</p>
+
+                <!-- Added Buttons (up to 3) -->
+                {%- if config.home_button1_name -%}
+                <a href="{{ config.home_button1_url }}">
+                    <button class="{{ config.home_button1_theme }}" style="vertical-align:middle">
+                        <span>{{ config.home_button1_name }}</span>
+                    </button>
+                </a>
+                {%- endif -%}
+                {%- if config.home_button2_name -%}
+                <a href="{{ config.home_button2_url }}">
+                    <button class="{{ config.home_button2_theme }}" style="vertical-align:middle">
+                        <span>{{ config.home_button2_name }}</span>
+                    </button>
+                </a>
+                {%- endif -%}
+                {%- if config.home_button3_name -%}
+                <a href="{{ config.home_button3_url }}">
+                    <button class="{{ config.home_button3_theme }}" style="vertical-align:middle">
+                        <span>{{ config.home_button3_name }}</span>
+                    </button>
+                </a>
+                {%- endif -%}
+            </div>
         </div>
-        {%- endif -%}
-        <!-- End Outer Condition -->
-    </div>
+        <div class="top-hr">
+
+            <!-- Start Outer Condition -->
+            {%- if config.home_panel1_title -%}
+            <div class="feature-item">
+                <!-- Image Icon -->
+                <h2><i class="fa-solid fa-people-pulling"></i></h2>
+                <h3>{{ config.home_panel1_title }}</h3>
+                <p>{{ config.home_panel1_blurb }}</p>
+            </div>
+            {%- endif -%}
+            <!-- End Outer Condition -->
+
+            <!-- Start Outer Condition -->
+            {%- if config.home_panel2_title -%}
+            <div class="feature-item">
+                <!-- Image Icon -->
+                <h2><i class="fa-solid fa-glasses"></i></h2>
+                <h3>{{ config.home_panel2_title }}</h3>
+                <p>{{ config.home_panel2_blurb }}</p>
+            </div>
+            {%- endif -%}
+            <!-- End Outer Condition -->
+
+            <!-- Start Outer Condition -->
+            {%- if config.home_panel3_title -%}
+            <div class="feature-item">
+                <!-- Image Icon -->
+                <h2><i class="fa-solid fa-person-falling-burst"></i></h2>
+                <h3>{{ config.home_panel3_title }}</h3>
+                <p>{{ config.home_panel3_blurb }}</p>
+            </div>
+            {%- endif -%}
+            <!-- End Outer Condition -->
+        </div>
     </div>
 </section>
 
 <!-- Toggleable JavaScript execution -->
 {%- if config.home_execute_js -%}
 <script>
-document$.subscribe(function() {
-  console.log("'home_execute_js' is enabled:");
-  {{ config.home_execute_js }}
-}).unsubscribe();
+    document$.subscribe(function () {
+        console.log("'home_execute_js' is enabled:");
+        { { config.home_execute_js } }
+    }).unsubscribe();
 </script>
 {%- endif -%}
 

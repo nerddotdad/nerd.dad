@@ -77,9 +77,9 @@ plugins:
   - blog:
       pagination_per_page: 5
 
-  - tts-amazon-polly:
-      output_dir: "audio"
-      voice_id: "Joanna"
+  # - tts-amazon-polly:
+  #     output_dir: "audio"
+  #     voice_id: "Joanna"
 
   # - include_dir_to_nav
   # - mkdocs_github_changelog
@@ -203,19 +203,19 @@ home_gradient_hsla: hsla(0deg,47%,55%,1) # Default Green: hsla(160deg,47%,55%,1)
 # home_button1_blurb: |                            # Short description of this button / section.
 #   About Me
 
-home_button2_name: My Podcast   # Comment this parameter out to remove the button.
-home_button2_url: podcast    # This path starts at your root mkdocs directory.
-home_button2_theme: md-button # Options: "md-button", "md-button md-button--primary"
-home_button2_icon: gear       # Options: "people", "gear", "image"
+home_button2_name: Blog   # Comment this parameter out to remove the button.
+home_button2_url: blog    # This path starts at your root mkdocs directory.
+home_button2_theme: md-button md-button--primary # Options: "md-button", "md-button md-button--primary"
+home_button2_icon: image      # Options: "people", "gear", "image"
 home_button2_blurb: |         # Short description of this button / section.
-  Check out my podcast
-
-home_button3_name: Blog   # Comment this parameter out to remove the button.
-home_button3_url: blog    # This path starts at your root mkdocs directory.
-home_button3_theme: md-button # Options: "md-button", "md-button md-button--primary"
-home_button3_icon: image      # Options: "people", "gear", "image"
-home_button3_blurb: |         # Short description of this button / section.
   Head over to my blog
+
+home_button3_name: My Podcast   # Comment this parameter out to remove the button.
+home_button3_url: podcast    # This path starts at your root mkdocs directory.
+home_button3_theme: md-button # Options: "md-button", "md-button md-button--primary"
+home_button3_icon: gear       # Options: "people", "gear", "image"
+home_button3_blurb: |         # Short description of this button / section.
+  Check out my podcast
 
 # Custom Homepage Panel(s)
 
