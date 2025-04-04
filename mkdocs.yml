@@ -97,7 +97,8 @@ plugins:
   #       - "$"
   - mike:
       alias_type: symlink
-  - tags
+  - tags:
+      tags_file: tags.md
   - macros
   - autorefs:
       resolve_closest: true
