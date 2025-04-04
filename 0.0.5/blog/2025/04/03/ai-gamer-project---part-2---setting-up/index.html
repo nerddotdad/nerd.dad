@@ -12,11 +12,13 @@
       
       
       
-        <link rel="canonical" href="https://nerd.dad/0.0.5/blog/2025/03/31/cicd-for-this-site/">
+        <link rel="canonical" href="https://nerd.dad/0.0.5/blog/2025/04/03/ai-gamer-project---part-2---setting-up/">
       
       
+        <link rel="prev" href="../ai-gamer-project---part-3---the-ai-model/">
       
-        <link rel="next" href="../test-page/">
+      
+        <link rel="next" href="../ai-gamer-project---part-1---introduction/">
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
@@ -24,7 +26,7 @@
     
     
       
-        <title>CI/CD for this site - nerd.dad</title>
+        <title>AI Gamer Project - Part 2 - Setting Up - nerd.dad</title>
       
     
     
@@ -82,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cicd-for-this-site" class="md-skip">
+        <a href="#ai-gamer-project-part-2-setting-up" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +135,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CI/CD for this site
+              AI Gamer Project - Part 2 - Setting Up
             
           </span>
         </div>
@@ -750,7 +752,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-03-31 00:00:00+00:00" class="md-ellipsis">March 31, 2025</time>
+                        <time datetime="2025-04-03 00:00:00+00:00" class="md-ellipsis">April 3, 2025</time>
                       </div>
                     </li>
                     
@@ -761,7 +763,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/nerd-dad-site/">Nerd Dad Site</a></span>
+                              <a href="../../../../category/projects/">projects</a></span>
                         </div>
                       </li>
                     
@@ -772,7 +774,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              1 min read
+                              4 min read
                             
                           </span>
                         </div>
@@ -794,6 +796,74 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minikube" class="md-nav__link">
+    <span class="md-ellipsis">
+      minikube
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-and-install-helm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download and Install Helm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploy-prometheus-and-grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploy Prometheus and Grafana
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check in
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
           
         </div>
@@ -805,27 +875,123 @@
   
 
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <span class="md-tag">ai</span>
+      
+    
+  </nav>
+
 
   
   
     
       
     
-    <a href="https://github.com/nerddotdad/nerd.dad/raw/main/docs/blog/posts/nerd_dad_site/ci_cd.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/nerddotdad/nerd.dad/raw/main/docs/blog/posts/projects/ai-2-setting-up.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="cicd-for-this-site">CI/CD for this site<a class="headerlink" href="#cicd-for-this-site" title="Permanent link">&para;</a></h1>
-<p>This has been quite a day.</p>
+<h1 id="ai-gamer-project-part-2-setting-up">AI Gamer Project - Part 2 - Setting Up<a class="headerlink" href="#ai-gamer-project-part-2-setting-up" title="Permanent link">&para;</a></h1>
+<p>This is going to be night one of the project.</p>
 <!-- more -->
 
-<p><audio controls><source src="https://nerd.dad/0.0.5/audio/blog/posts/nerd_dad_site/ci_cd.mp3" type="audio/mpeg"></audio></p>
-<p>Along with working on-call I decided I would take on the CI/CD pipeline for automatic site builds.</p>
-<p>It's using github actions and while I'm still new to a lot of this I know enough to be dangerous.</p>
-<p>It's almost 1am so I'll make this brief. I wanted to use github actions to determine if my commit message started with buid. If it did then it would build the env and run the mike commands to deploy my site! Pretty cool! you'll be able to see previous versions of my site from a dropdown in the header. I may in the future tie these versions to something important but for now it's just a way for me to do a bit of archiving.</p>
+<p>I'm hoping I can get the setup done in one go!. I'll leave my commands here in this blog incase you want to try to follow along. Bear in mind I'm going to be learning this as I go as well!</p>
+<h2 id="step-1-prerequisites">Step 1: Prerequisites<a class="headerlink" href="#step-1-prerequisites" title="Permanent link">&para;</a></h2>
+<p>Ensure you have the following installed:</p>
+<ul>
+<li>WSL 2 with a Linux distribution (Ubuntu is recommended)</li>
+<li>Docker Desktop</li>
+<li>kubectl (Kubernetes CLI)</li>
+<li>Helm (for package management in Kubernetes)</li>
+<li>Minikube (or K3s, but we'll start with Minikube)</li>
+</ul>
+<p>I had WSL running on my system already so if you're jumping in you'll need to see how to do that yourself.</p>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<div class="language-shell highlight"><span class="filename">Update your package list and install dependencies</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>gnupg
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Add Docker’s official GPG key</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>-d<span class="w"> </span>/etc/apt/keyrings
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/keyrings/docker.asc<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>a+r<span class="w"> </span>/etc/apt/keyrings/docker.asc
+</span></code></pre></div>
+<p><div class="language-shell highlight"><span class="filename">Add the Docker repository</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Install Docker</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Enable Docker to run without sudo (optional but recommended)</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>newgrp<span class="w"> </span>docker
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Verify Docker is installed correctly</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>--version
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+</span></code></pre></div></p>
+<p><div class="language-shell highlight"><span class="filename">Restart WSL</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>wsl<span class="w"> </span>--shutdown
+</span></code></pre></div>
+then reopen WSL</p>
+<h3 id="minikube">minikube<a class="headerlink" href="#minikube" title="Permanent link">&para;</a></h3>
+<p><div class="language-shell highlight"><span class="filename">install Minikube</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>curl<span class="w"> </span>-LO<span class="w"> </span>https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>install<span class="w"> </span>minikube-linux-amd64<span class="w"> </span>/usr/local/bin/minikube
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Start Minikube using Docker as the driver</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>minikube<span class="w"> </span>start<span class="w"> </span>--driver<span class="o">=</span>docker
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Verify that the cluster is running</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-A
+</span></code></pre></div></p>
+<h3 id="download-and-install-helm">Download and Install Helm<a class="headerlink" href="#download-and-install-helm" title="Permanent link">&para;</a></h3>
+<p><div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Add the Helm repository</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://baltocdn.com/helm/signing.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/usr/share/keyrings/helm.asc<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Add the Helm APT Repo</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [signed-by=/usr/share/keyrings/helm.asc] https://baltocdn.com/helm/stable/debian/ all main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/helm-stable-debian.list
+</span></code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Update package lists and install Helm and Verify Install</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>helm
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>helm<span class="w"> </span>version
+</span></code></pre></div></p>
+<h3 id="deploy-prometheus-and-grafana">Deploy Prometheus and Grafana<a class="headerlink" href="#deploy-prometheus-and-grafana" title="Permanent link">&para;</a></h3>
+<div class="language-shell highlight"><span class="filename">Add the helm repo and update</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>prometheus-community<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>grafana<span class="w"> </span>https://grafana.github.io/helm-charts
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Install prometheus and Grafana in Kubernetes</span><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>helm<span class="w"> </span>install<span class="w"> </span>prometheus<span class="w"> </span>prometheus-community/kube-prometheus-stack<span class="w"> </span>--namespace<span class="w"> </span>monitoring<span class="w"> </span>--create-namespace
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>helm<span class="w"> </span>install<span class="w"> </span>grafana<span class="w"> </span>grafana/grafana<span class="w"> </span>--namespace<span class="w"> </span>monitoring<span class="w"> </span>--set<span class="w"> </span>persistence.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--set<span class="w"> </span>persistence.size<span class="o">=</span>10Gi
+</span></code></pre></div>
+<p>After install Grafana you'll get a prompt with how to get your admin password and how to access the application. Please note this command down so you can get this password when you need it.</p>
+<div class="language-shell highlight"><span class="filename">Get Grafana admin password</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>--namespace<span class="w"> </span>monitoring<span class="w"> </span>grafana<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.admin-password}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Verify a PVC was created for grafana so your dashboards persist</span><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pvc<span class="w"> </span>-n<span class="w"> </span>monitoring
+</span></code></pre></div>
+<div class="language-shell highlight"><span class="filename">Expose Grafana so you can acces it from your browser</span><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/grafana<span class="w"> </span><span class="m">3000</span>:80<span class="w"> </span>-n<span class="w"> </span>monitoring
+</span></code></pre></div>
+<p><a href="http://localhost:3000">http://localhost:3000</a></p>
+<p>Grafana is up and running</p>
+<p><img alt="alt text" src="../../../../projects/ai-2-grafana-1.png" /></p>
+<h3 id="check-in">Check in<a class="headerlink" href="#check-in" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">How's your set up looking so far? </p>
+<p>So at this point my kubernetes cluster looks like this and hopefully yours does too! If you had any hang ups up to this point leave them in the comments below and I'll try to help!</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>NAMESPACE<span class="w">     </span>NAME<span class="w">                                                     </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">      </span>AGE
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>kube-system<span class="w">   </span>coredns-668d6bf9bc-5bd24<span class="w">                                 </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>25m
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>kube-system<span class="w">   </span>etcd-minikube<span class="w">                                            </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>25m
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>kube-system<span class="w">   </span>kube-apiserver-minikube<span class="w">                                  </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>25m
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>kube-system<span class="w">   </span>kube-controller-manager-minikube<span class="w">                         </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>25m
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>kube-system<span class="w">   </span>kube-proxy-zz6rd<span class="w">                                         </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>25m
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>kube-system<span class="w">   </span>kube-scheduler-minikube<span class="w">                                  </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>25m
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>kube-system<span class="w">   </span>storage-provisioner<span class="w">                                      </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">1</span><span class="w"> </span><span class="o">(</span>24m<span class="w"> </span>ago<span class="o">)</span><span class="w">   </span>25m
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>monitoring<span class="w">    </span>alertmanager-prometheus-kube-prometheus-alertmanager-0<span class="w">   </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>2m13s
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>monitoring<span class="w">    </span>grafana-677fb75ddd-48z2z<span class="w">                                 </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>77s
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>monitoring<span class="w">    </span>prometheus-grafana-6854b47bf4-spd8b<span class="w">                      </span><span class="m">3</span>/3<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>2m26s
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>monitoring<span class="w">    </span>prometheus-kube-prometheus-operator-7f8d744cd7-zsgh4<span class="w">     </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>2m26s
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>monitoring<span class="w">    </span>prometheus-kube-state-metrics-f699c577d-45lff<span class="w">            </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>2m26s
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>monitoring<span class="w">    </span>prometheus-prometheus-kube-prometheus-prometheus-0<span class="w">       </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>2m13s
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>monitoring<span class="w">    </span>prometheus-prometheus-node-exporter-fk8rc<span class="w">                </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">             </span>2m26s
+</span></code></pre></div>
+</div>
 
 
 
@@ -848,7 +1014,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 2, 2025 21:48:55">April 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 4, 2025 06:57:10">April 4, 2025</span>
   </span>
 
     
@@ -858,7 +1024,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 31, 2025 21:25:29">March 31, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 4, 2025 06:57:10">April 4, 2025</span>
   </span>
 
     
@@ -986,15 +1152,31 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
+          
+          <a href="../ai-gamer-project---part-3---the-ai-model/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AI Gamer Project - Part 3 - The AI Model">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                AI Gamer Project - Part 3 - The AI Model
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="../test-page/" class="md-footer__link md-footer__link--next" aria-label="Next: Test Page">
+          <a href="../ai-gamer-project---part-1---introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: AI Gamer Project - Part 1 - Introduction">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Test Page
+                AI Gamer Project - Part 1 - Introduction
               </div>
             </div>
             <div class="md-footer__button md-icon">
