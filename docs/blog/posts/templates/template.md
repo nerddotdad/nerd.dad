@@ -2,13 +2,15 @@
 comments: true
 generate_audio: true
 date:
-  created: 2025-03-30
+    created: 2025-03-30
 draft: true
 categories:
-  - Life
+    - Life
+tags:
+    - blog
 ---
 
-# beginning the Journey
+# Begining the Journey
 
 It's strange putting all this out there...
 <!-- more -->

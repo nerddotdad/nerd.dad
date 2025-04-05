@@ -1,6 +1,36 @@
-:root  > * {
-    --md-primary-fg-color:        #48A6A7;
-    --md-primary-fg-color--light: #9ACBD0;
-    --md-primary-fg-color--dark:  #006A71;
-    --md-accent-fg-color:         #F2EFE7;
-  }
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:           #747ca3;
+  --md-primary-fg-color-light:     #ffffe3;
+  --md-primary-fg-color-lightest:  #ffffff;
+  --md-primary-fg-color-dark:      #5d979b;
+  --md-accent-fg-color:            #eae8e2;
+  --md-primary-bg-color:           #ffffff;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:           #604dad;
+  --md-primary-fg-color-light:     #135455;
+  --md-primary-fg-color-lightest:  #eaedff;
+  --md-primary-fg-color-dark:      #00292c;
+  --md-accent-fg-color:            #c8c5d6;
+  --md-primary-bg-color:           #eaedff;
+}
+
+.mid-header {
+  left: 0;
+  position: sticky;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  background: linear-gradient(to top, var(--md-primary-fg-color), var(--md-primary-fg-color-light) 200%);
+}
+
+.mid-header__inner {
+  max-width: 61rem;
+  align-items: center;
+  padding: 0 .2rem;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  display: flex;
+}

@@ -5,7 +5,7 @@ date:
     created: 2025-04-01
 draft: false
 categories:
-    - projects
+    - Projects
 tags:
     - ai
 ---
@@ -42,3 +42,5 @@ Would you like to start with setting up the Kubernetes cluster or the AI model?
 ## Conclusion
 
 Wish me luck!!! This is going to be one hell of an adventure!
+
+## Share

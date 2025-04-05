@@ -5,7 +5,7 @@ date:
     created: 2025-04-03
 draft: false
 categories:
-    - projects
+    - Projects
 tags:
     - ai
 ---
@@ -135,7 +135,7 @@ It then has be create a docker file to package the model.
 
     ??? failure title "Failure 2: Smaller but broken!"
 
-        This dockerfile created a docker image that was well under the size budget... But later down the road I found out that it was missing a few dependancies that was blocking my pod from starting up.
+        This dockerfile created a docker image that was well under the size budget... But later down the road I found out that it was missing a few dependencies that was blocking my pod from starting up.
 
         ```dockerfile
         # Use a minimal base image, like Python Alpine
@@ -539,7 +539,7 @@ UGH! It's 11:30 at night. Everyone is asleep. I feel Like I'm so close to gettin
 
 My AI buddy recommended I exec into the pod and try to slam the github api with a curl to see what happens. Funny, I don't remember having curl install into the pod... I didn't... That's ok, instead I exec into the pod and echo my GITHUB_TOKEN env var if that exists then we know it's something else...
 
-Well truns out that in the `train.py` script I needed to put my github username... FIXED! let's see what happens!
+Well turns out that in the `train.py` script I needed to put my github username... FIXED! let's see what happens!
 
 - docker image rebuild :white_check_mark:
 - docker image pushed :white_check_mark:
@@ -653,7 +653,7 @@ Wrapping the env in a DummyVecEnv.
 Issue created: https://github.com/nerddotdad/ai-gamer/issues/1
 ```
 
-Let's goooo!!! 
+Let's goooo!!!
 
 The automation made it's first issue!
 
@@ -662,3 +662,5 @@ The automation made it's first issue!
 ## Conclusion
 
 This is an excellent stopping point for the night. I'm going to call it here. Hopefully you learned something along the way like I did! Leave a comment here on my blog if you liked it!
+
+## Share

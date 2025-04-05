@@ -5,7 +5,7 @@ date:
     created: 2025-04-02
 draft: false
 categories:
-    - projects
+    - Projects
 tags:
     - ai
 ---
@@ -18,6 +18,7 @@ This is going to be night one of the project.
 I'm hoping I can get the setup done in one go!. I'll leave my commands here in this blog incase you want to try to follow along. Bear in mind I'm going to be learning this as I go as well!
 
 ## Step 1: Prerequisites
+
 Ensure you have the following installed:
 
 - WSL 2 with a Linux distribution (Ubuntu is recommended)
@@ -58,6 +59,7 @@ docker run hello-world
 ```shell title="Restart WSL"
 wsl --shutdown
 ```
+
 then reopen WSL
 
 ### minikube
@@ -79,10 +81,12 @@ kubectl get nodes -A
 # Add the Helm repository
 curl -fsSL https://baltocdn.com/helm/signing.asc | sudo tee /usr/share/keyrings/helm.asc > /dev/null
 ```
+
 ```shell
 # Add the Helm APT Repo
 echo "deb [signed-by=/usr/share/keyrings/helm.asc] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 ```
+
 ```shell
 # Update package lists and install Helm and Verify Install
 sudo apt update && sudo apt install helm
@@ -146,3 +150,5 @@ Grafana is up and running
     monitoring    prometheus-prometheus-kube-prometheus-prometheus-0       2/2     Running   0             2m13s
     monitoring    prometheus-prometheus-node-exporter-fk8rc                1/1     Running   0             2m26s
     ```
+
+## Share
