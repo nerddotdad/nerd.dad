@@ -52,4 +52,4 @@ If this resonates—or doesn’t—I’d love to hear from you.
 
 You can drop a comment below or find me on (bluesky)[https://bsky.app/profile/nerddotdad.bsky.social]
 
-Let’s talk.
+Let’s talk!
