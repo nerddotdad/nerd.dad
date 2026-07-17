@@ -2,14 +2,19 @@
   {
     "version": "main",
     "title": "main",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "2026.07.17-8b7b13b",
     "title": "2026.07.17-8b7b13b",
     "aliases": []
+  },
+  {
+    "version": "2026.07",
+    "title": "2026.07",
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "0.0.5",
