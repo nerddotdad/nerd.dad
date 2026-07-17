@@ -1,0 +1,27 @@
+---
+description: Homelab / cluster documentation lives in docs/homelab/ and publishes on GitHub Pages
+alwaysApply: true
+---
+
+# Homelab documentation (nerd.dad)
+
+**All create/update work for homelab or cluster documentation goes in this repository.**
+
+Published at: https://nerd.dad/latest/homelab/
+
+| Content | Path |
+|---------|------|
+| Cluster guides (overview, nav, kubectl, Jellyfin history) | `docs/homelab/guides/` |
+| Hand-written pages (`mk_*.md`) | `docs/homelab/` (mirrors cluster `kubernetes/` layout) |
+| Shared runbook snippets | `includes/homelab/runbook/` |
+| Site / blog (non-homelab) | `docs/` (blog, podcast, etc.) |
+
+## Conventions
+
+- Alert runbooks: `docs/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_*.md`
+- Do **not** put runbooks under truecharts `clusters/` (breaks ClusterTool genconfig).
+- HelmRelease YAML, PrometheusRules, and Flux manifests stay in **truecharts**.
+- Alert annotations in truecharts should use:
+  `https://nerd.dad/latest/homelab/kubernetes/.../mk_runbook_<slug>/`
+
+There is no in-cluster MkDocs image — GitHub Pages is the docs host.

@@ -296,7 +296,7 @@
                 <h1>{{ config.home_tagline }}</h1>
                 <p>{{ config.home_description }}</p>
 
-                <!-- Added Buttons (up to 3) -->
+                <!-- Added Buttons (up to 4) -->
                 {%- if config.home_button1_name -%}
                 <a href="{{ config.home_button1_url }}">
                     <button class="{{ config.home_button1_theme }}" style="vertical-align:middle">
@@ -315,6 +315,13 @@
                 <a href="{{ config.home_button3_url }}">
                     <button class="{{ config.home_button3_theme }}" style="vertical-align:middle">
                         <span>{{ config.home_button3_name }}</span>
+                    </button>
+                </a>
+                {%- endif -%}
+                {%- if config.home_button4_name -%}
+                <a href="{{ config.home_button4_url }}">
+                    <button class="{{ config.home_button4_theme }}" style="vertical-align:middle">
+                        <span>{{ config.home_button4_name }}</span>
                     </button>
                 </a>
                 {%- endif -%}
