@@ -12,6 +12,7 @@ See `docs/homelab/index.md` for conventions. GitOps cluster config lives in [tru
 
 ## Docs deploy
 
-- **Push to `main`:** updates rolling `main` → `latest` (no new history entry)
-- **Monthly (1st):** snapshots previous month as `YYYY.MM` if there were commits since the last `docs/*` tag
-- **Actions → Run workflow:** choose `rolling` or `milestone` (current `YYYY.MM`)
+Version = current month (`YYYY.MM`, e.g. `2026.07`), always aliased as `latest`.
+
+- **Push to `main` / manual run:** overwrite that month’s version and refresh `latest`
+- **New month:** first deploy creates the new `YYYY.MM`; prior months stay in the version dropdown
