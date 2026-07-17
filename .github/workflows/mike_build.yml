@@ -4,74 +4,61 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: write
+
 jobs:
-  build_check:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.commit_message_prefix.outputs.version }}
-      build_docs: ${{ steps.build_trigger_check.outputs.build_docs }}
-    steps:
-      - name: Get Commit Message Prefix
-        id: commit_message_prefix
-        run: |
-          trigger=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 1)
-          version=$(echo "${{ github.event.head_commit.message }}" | cut -d ' ' -f 2)
-          echo "build_trigger=$trigger" >> $GITHUB_OUTPUT
-          echo "version=$version" >> $GITHUB_OUTPUT
-      - name: Build Trigger Check
-        id: build_trigger_check
-        run: |
-          if [ ${{ steps.commit_message_prefix.outputs.build_trigger }} == "build" ]
-          then
-            echo "Trigger word found" >> $GITHUB_STEP_SUMMARY
-            echo "build_docs=true" >> $GITHUB_OUTPUT
-          else
-            echo "Trigger word not found" >> $GITHUB_STEP_SUMMARY
-            echo "build_docs=false" >> $GITHUB_OUTPUT
-          fi
-
-  graceful_cancel:
-    needs: build_check
-    if: ${{ needs.build_check.outputs.build_docs == 'false' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build Skip
-        run: |
-          echo "Skipping Build" >> $GITHUB_STEP_SUMMARY
-
   deploy:
-    needs: build_check
-    if: ${{ needs.build_check.outputs.build_docs == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - uses: actions/setup-python@v4
         with:
           python-version: 3.10.6
-      - name: "Configure AWS Credentials"
+
+      - name: Resolve docs version
+        id: version
+        run: |
+          set -euo pipefail
+          msg="${{ github.event.head_commit.message }}"
+          trigger="$(echo "$msg" | head -n1 | cut -d ' ' -f 1)"
+          maybe_ver="$(echo "$msg" | head -n1 | cut -d ' ' -f 2)"
+          # Optional: still honor "build 0.0.7 ..." for a clean semver alias
+          if [ "$trigger" = "build" ] && [ -n "$maybe_ver" ] && [ "$maybe_ver" != "$trigger" ]; then
+            ver="$maybe_ver"
+          else
+            ver="$(date -u +%Y.%m.%d)-${GITHUB_SHA::7}"
+          fi
+          echo "version=$ver" >> "$GITHUB_OUTPUT"
+          echo "Deploying docs version: $ver" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.1.0
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-1  # Change this to your AWS region
+          aws-region: us-west-1
+
       - name: Set AWS environment variables
         run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-          echo "AWS_DEFAULT_REGION=us-west-1" >> $GITHUB_ENV
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> "$GITHUB_ENV"
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> "$GITHUB_ENV"
+          echo "AWS_DEFAULT_REGION=us-west-1" >> "$GITHUB_ENV"
+
       - name: Install Dependencies
-        run: |
-          pip install -r docs/requirements.txt
+        run: pip install -r docs/requirements.txt
+
       - name: Setup Docs Deploy
         run: |
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
+
       - name: Build Docs Website
-        run: | 
-          mike deploy --push --update-aliases ${{ needs.build_check.outputs.version }} latest
-          echo "Build complete for version: ${{ needs.build_check.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+        run: |
+          mike deploy --push --update-aliases "${{ steps.version.outputs.version }}" latest
+          echo "Build complete for version: ${{ steps.version.outputs.version }}" >> "$GITHUB_STEP_SUMMARY"
