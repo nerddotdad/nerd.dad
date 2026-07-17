@@ -1,41 +1,109 @@
 name: Build/Generate Site With Mike
 
+# - push: overwrite rolling "main" → alias "latest" (live site, no history bloat)
+# - monthly (1st): snapshot previous month as YYYY.MM if there were commits since last docs/* tag
+# - workflow_dispatch: rolling or milestone (current YYYY.MM)
+
 on:
   push:
     branches:
       - main
+  schedule:
+    # 06:00 UTC on the 1st — archive the month that just ended
+    - cron: "0 6 1 * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "rolling = update latest only; milestone = create YYYY.MM snapshot"
+        type: choice
+        options:
+          - rolling
+          - milestone
+        default: rolling
 
 permissions:
   contents: write
 
 jobs:
-  deploy:
+  plan:
     runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.decide.outputs.should_deploy }}
+      version: ${{ steps.decide.outputs.version }}
+      mode: ${{ steps.decide.outputs.mode }}
+      summary: ${{ steps.decide.outputs.summary }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.10.6
-
-      - name: Resolve docs version
-        id: version
+      - name: Decide deploy mode and version
+        id: decide
         run: |
           set -euo pipefail
-          msg="${{ github.event.head_commit.message }}"
-          trigger="$(echo "$msg" | head -n1 | cut -d ' ' -f 1)"
-          maybe_ver="$(echo "$msg" | head -n1 | cut -d ' ' -f 2)"
-          # Optional: still honor "build 0.0.7 ..." for a clean semver alias
-          if [ "$trigger" = "build" ] && [ -n "$maybe_ver" ] && [ "$maybe_ver" != "$trigger" ]; then
-            ver="$maybe_ver"
+
+          event="${{ github.event_name }}"
+          should_deploy=true
+          mode=""
+          version=""
+          summary=""
+
+          if [ "$event" = "push" ]; then
+            mode="rolling"
+            version="main"
+            summary="Push to main → update rolling **main** (alias **latest**)"
+          elif [ "$event" = "schedule" ]; then
+            mode="milestone"
+            # Previous calendar month (UTC), e.g. run on 2026-08-01 → 2026.07
+            version="$(date -u -d "$(date -u +%Y-%m-01) -1 day" +%Y.%m)"
+            summary="Monthly cron → milestone **${version}** (if changed)"
           else
-            ver="$(date -u +%Y.%m.%d)-${GITHUB_SHA::7}"
+            mode="${{ github.event.inputs.mode }}"
+            if [ "$mode" = "milestone" ]; then
+              version="$(date -u +%Y.%m)"
+              summary="Manual milestone → **${version}** (if changed)"
+            else
+              version="main"
+              summary="Manual rolling → update **main** (alias **latest**)"
+            fi
           fi
-          echo "version=$ver" >> "$GITHUB_OUTPUT"
-          echo "Deploying docs version: $ver" >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$mode" = "milestone" ]; then
+            last_tag="$(git tag -l 'docs/[0-9][0-9][0-9][0-9].[0-9][0-9]' | sort -V | tail -n1 || true)"
+            if [ -n "$last_tag" ]; then
+              count="$(git rev-list "${last_tag}..HEAD" --count)"
+              if [ "$count" -eq 0 ]; then
+                should_deploy=false
+                summary="Skip milestone **${version}**: no commits since \`${last_tag}\`"
+              else
+                summary="Milestone **${version}**: ${count} commit(s) since \`${last_tag}\`"
+              fi
+            else
+              summary="Milestone **${version}**: first docs snapshot (no prior docs/* tags)"
+            fi
+          fi
+
+          {
+            echo "should_deploy=${should_deploy}"
+            echo "version=${version}"
+            echo "mode=${mode}"
+            echo "summary=${summary}"
+          } >> "$GITHUB_OUTPUT"
+
+          echo "$summary" >> "$GITHUB_STEP_SUMMARY"
+
+  deploy:
+    needs: plan
+    if: needs.plan.outputs.should_deploy == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10.6"
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.1.0
@@ -58,7 +126,28 @@ jobs:
           git config --global user.name "Docs Deploy"
           git config --global user.email "itzteajay@gmail.com"
 
-      - name: Build Docs Website
+      - name: Deploy with Mike
+        env:
+          MODE: ${{ needs.plan.outputs.mode }}
+          VERSION: ${{ needs.plan.outputs.version }}
         run: |
-          mike deploy --push --update-aliases "${{ steps.version.outputs.version }}" latest
-          echo "Build complete for version: ${{ steps.version.outputs.version }}" >> "$GITHUB_STEP_SUMMARY"
+          set -euo pipefail
+          echo "${{ needs.plan.outputs.summary }}" >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$MODE" = "rolling" ]; then
+            mike deploy --push --update-aliases main latest
+            echo "Deployed rolling **main** → **latest**" >> "$GITHUB_STEP_SUMMARY"
+          else
+            mike deploy --push --update-aliases "$VERSION" latest
+            # Keep rolling main in sync with the snapshot we just published
+            mike deploy --push main
+            tag="docs/${VERSION}"
+            if git rev-parse "$tag" >/dev/null 2>&1; then
+              git tag -f "$tag"
+              git push -f origin "$tag"
+            else
+              git tag "$tag"
+              git push origin "$tag"
+            fi
+            echo "Deployed milestone **${VERSION}** → **latest** (git tag \`${tag}\`)" >> "$GITHUB_STEP_SUMMARY"
+          fi
