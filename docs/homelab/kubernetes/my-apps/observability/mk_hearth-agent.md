@@ -13,7 +13,7 @@ Headless **Hermes Agent** runs as a **sidecar** in the Hearth Deployment — sam
 | Dashboard | `https://hermes-dash.${DOMAIN_0}` (port 9119; basic auth `admin` / `${ADMIN_PASS}`) |
 | Auth (API) | `Authorization: Bearer ${HEARTH_AGENT_API_KEY}` |
 | Tools | Hearth MCP at `http://127.0.0.1:8000/mcp` (`HEARTH_SANDBOX_AGENT_API_KEY` in agent env only) |
-| Model | In-cluster Ollama (`qwen3.5:9b` seed) |
+| Model | Chosen in Hearth Settings → AIOps; sent per-request as OpenAI `model`. Hermes maps it via `platforms.api_server.extra.model_routes` (synced from Ollama on agent boot). |
 | State | PVC `hearth-agent-data` + ConfigMap `hearth-agent-seed` |
 
 ## Secrets (never in chat)
