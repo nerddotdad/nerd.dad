@@ -69,11 +69,23 @@
          <lastmod>2026-07-20</lastmod>
     </url>
     <url>
+         <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/mk_hearth-agent/</loc>
+         <lastmod>2026-07-20</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/mk_hearth-sandbox/</loc>
+         <lastmod>2026-07-20</lastmod>
+    </url>
+    <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/mk_hermes-oncall/</loc>
          <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/mk_observability/</loc>
+         <lastmod>2026-07-20</lastmod>
+    </url>
+    <url>
+         <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/mk_retire-hermes-webui-triage/</loc>
          <lastmod>2026-07-20</lastmod>
     </url>
     <url>

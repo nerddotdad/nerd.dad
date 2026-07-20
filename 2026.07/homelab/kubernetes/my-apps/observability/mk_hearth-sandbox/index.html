@@ -12,31 +12,31 @@
       
       
       
-        <link rel="canonical" href="https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-ollama-model-pull-stuck/">
+        <link rel="canonical" href="https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/mk_hearth-sandbox/">
       
       
-        <link rel="prev" href="../mk_runbook_homelab-longhorn-volume-faulted/">
+        <link rel="prev" href="../mk_hearth-agent/">
       
       
-        <link rel="next" href="../mk_runbook_homelab-volsync-metrics-down/">
+        <link rel="next" href="../mk_hermes-oncall/">
       
       
         
       
       
-      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Runbook: Ollama model pull (Job) - nerd.dad</title>
+        <title>Hearth triage sandbox - nerd.dad</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,9 +55,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#homelabollamamodelpullstuck" class="md-skip">
+        <a href="#hearth-triage-sandbox" class="md-skip">
           Skip to content
         </a>
       
@@ -101,12 +101,12 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="../../../../../../.."> 
+  <a href="../../../../../.."> 
     <strong>Click here to go to latest.</strong>
   </a>
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../../../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -130,9 +130,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../../.." title="nerd.dad" class="md-header__button md-logo" aria-label="nerd.dad" data-md-component="logo">
+    <a href="../../../../.." title="nerd.dad" class="md-header__button md-logo" aria-label="nerd.dad" data-md-component="logo">
       
-  <img src="../../../../../../attachments/main/logo_transparent.png" alt="logo">
+  <img src="../../../../../attachments/main/logo_transparent.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Runbook: Ollama model pull (Job)
+              Hearth triage sandbox
             
           </span>
         </div>
@@ -261,7 +261,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../.." class="md-tabs__link">
+      <a href="../../../../.." class="md-tabs__link">
         
   
   
@@ -280,7 +280,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../../podcast/" class="md-tabs__link">
+      <a href="../../../../../podcast/" class="md-tabs__link">
         
   
   
@@ -299,7 +299,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../../tags/" class="md-tabs__link">
+      <a href="../../../../../tags/" class="md-tabs__link">
         
   
   
@@ -320,7 +320,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../blog/" class="md-tabs__link">
+        <a href="../../../../../blog/" class="md-tabs__link">
           
   
   
@@ -344,7 +344,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../../../" class="md-tabs__link">
+        <a href="../../../../" class="md-tabs__link">
           
   
   
@@ -389,9 +389,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../../.." title="nerd.dad" class="md-nav__button md-logo" aria-label="nerd.dad" data-md-component="logo">
+    <a href="../../../../.." title="nerd.dad" class="md-nav__button md-logo" aria-label="nerd.dad" data-md-component="logo">
       
-  <img src="../../../../../../attachments/main/logo_transparent.png" alt="logo">
+  <img src="../../../../../attachments/main/logo_transparent.png" alt="logo">
 
     </a>
     nerd.dad
@@ -418,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../.." class="md-nav__link">
+      <a href="../../../../.." class="md-nav__link">
         
   
   
@@ -445,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../podcast/" class="md-nav__link">
+      <a href="../../../../../podcast/" class="md-nav__link">
         
   
   
@@ -472,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../tags/" class="md-nav__link">
+      <a href="../../../../../tags/" class="md-nav__link">
         
   
   
@@ -529,7 +529,7 @@
   
   
   
-    <a href="../../../../../../blog/" class="md-nav__link">
+    <a href="../../../../../blog/" class="md-nav__link">
       
   
   
@@ -596,7 +596,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../" class="md-nav__link ">
+            <a href="../../../../" class="md-nav__link ">
               
   
   
@@ -707,7 +707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../guides/cluster-guide/" class="md-nav__link">
+      <a href="../../../../guides/cluster-guide/" class="md-nav__link">
         
   
   
@@ -735,7 +735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../guides/jellyfin-watch-history/" class="md-nav__link">
+      <a href="../../../../guides/jellyfin-watch-history/" class="md-nav__link">
         
   
   
@@ -763,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../guides/navigation/" class="md-nav__link">
+      <a href="../../../../guides/navigation/" class="md-nav__link">
         
   
   
@@ -791,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../guides/quick-reference/" class="md-nav__link">
+      <a href="../../../../guides/quick-reference/" class="md-nav__link">
         
   
   
@@ -980,7 +980,7 @@
   
   
   
-    <a href="../../../communication/element/mk_setup/" class="md-nav__link">
+    <a href="../../communication/element/mk_setup/" class="md-nav__link">
       
   
   
@@ -1088,7 +1088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mk_hearth-agent/" class="md-nav__link">
+      <a href="../mk_hearth-agent/" class="md-nav__link">
         
   
   
@@ -1113,10 +1113,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../mk_hearth-sandbox/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hearth triage sandbox
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1132,6 +1159,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APIs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-attach-llm-agnostic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent attach (LLM-agnostic)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-env-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config (env / Settings)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1144,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mk_hermes-oncall/" class="md-nav__link">
+      <a href="../mk_hermes-oncall/" class="md-nav__link">
         
   
   
@@ -1172,7 +1274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mk_observability/" class="md-nav__link">
+      <a href="../mk_observability/" class="md-nav__link">
         
   
   
@@ -1200,7 +1302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mk_retire-hermes-webui-triage/" class="md-nav__link">
+      <a href="../mk_retire-hermes-webui-triage/" class="md-nav__link">
         
   
   
@@ -1252,7 +1354,7 @@
   
   
   
-    <a href="../../alert-test/mk_alert-test/" class="md-nav__link">
+    <a href="../alert-test/mk_alert-test/" class="md-nav__link">
       
   
   
@@ -1283,55 +1385,55 @@
                 
   
   
+  
+  
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
   
   
   
-    
-    
+    <a href="../runbooks/mk_runbook_homelab-downloader-metrics-down/" class="md-nav__link">
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1_2_7" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_5_3_1_2_7" id="__nav_5_3_1_2_7_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -1345,421 +1447,12 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_5_3_1_2_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_3_1_2_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Runbooks
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_homelab-downloader-metrics-down/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: HomelabDownloaderMetricsDown
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_homelab-flux-helmrelease-not-ready/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: HomelabFluxHelmReleaseNotReady
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_homelab-flux-helmrelease-test-fail/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: HomelabFluxHelmReleaseTestFail
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_homelab-immichframe-asset-api-down/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: HomelabImmichframeAssetApiDown
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_homelab-longhorn-disk-not-schedulable/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: Longhorn disk capacity and schedulability
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_homelab-longhorn-volume-faulted/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: Longhorn volume faulted
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: Ollama model pull (Job)
+    </a>
   
 
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: Ollama model pull (Job)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-this-means" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What this means
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#triage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Triage
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kubejobfailed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        KubeJobFailed
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resolve" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resolve
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_homelab-volsync-metrics-down/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: VolSync metrics scrape down
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_homelab-volsync-missed-backup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: VolSync backup and mover jobs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_index/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Alert runbooks
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mk_runbook_template/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Runbook: ALERT_NAME_HERE
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1818,76 +1511,147 @@
     
       
     
-    <a href="https://github.com/nerddotdad/nerd.dad/raw/main/docs/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-ollama-model-pull-stuck.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/nerddotdad/nerd.dad/raw/main/docs/homelab/kubernetes/my-apps/observability/mk_hearth-sandbox.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="homelabollamamodelpullstuck">HomelabOllamaModelPullStuck<a class="headerlink" href="#homelabollamamodelpullstuck" title="Permanent link">&para;</a></h1>
+<h1 id="hearth-triage-sandbox">Hearth triage sandbox<a class="headerlink" href="#hearth-triage-sandbox" title="Permanent link">&para;</a></h1>
+<p>Hearth owns an <strong>incident-scoped triage sandbox</strong> that any LLM/agent platform can attach to. Hermes remains an optional investigate adapter; cluster tools (<code>kubectl</code>, <code>flux</code>, shell utils) run in Hearth sandboxes — not inside the Hermes pod.</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+  subgraph hearth [Hearth]
+    Inc[Incident]
+    SB[Sandbox subsystem]
+    UI[Incident UI terminal]
+    MCP[MCP plus REST]
+    Inc --&gt; SB
+    SB --&gt; MCP
+    UI --&gt; SB
+  end
+  Agent[Hermes or other agent] --&gt;|MCP tools| MCP
+  SB --&gt; Pod[Ephemeral sandbox Pod]
+  Pod --&gt; SA[Read-only ClusterRole]</code></pre>
 <table>
 <thead>
 <tr>
-<th>Field</th>
-<th>Value</th>
+<th>Piece</th>
+<th>Role</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Alert</strong></td>
-<td><code>HomelabOllamaModelPullStuck</code></td>
+<td><strong>Hearth</strong></td>
+<td>Incident desk; sandbox lifecycle; MCP + REST + PTY</td>
 </tr>
 <tr>
-<td><strong>Job</strong></td>
-<td><code>ollama-model-pull-job</code> in namespace <code>ai</code></td>
+<td><strong><code>hearth-sandbox</code> image</strong></td>
+<td>Tool container (<code>kubectl</code>, <code>flux</code>, <code>jq</code>, utils) + <code>sandbox-agent</code> on <code>:8080</code></td>
+</tr>
+<tr>
+<td><strong>Agent platforms</strong></td>
+<td>Call MCP (<code>sandbox_exec</code>, <code>sandbox_status</code>, <code>sandbox_ensure</code>) with incident token</td>
+</tr>
+<tr>
+<td><strong>Operators</strong></td>
+<td>Open <strong>Triage terminal</strong> on the incident page (same sandbox)</td>
 </tr>
 </tbody>
 </table>
-<h2 id="what-this-means">What this means<a class="headerlink" href="#what-this-means" title="Permanent link">&para;</a></h2>
-<p>The GitOps <strong>bootstrap Job</strong> that pulls Ollama models has been <strong>active for more than 36 hours</strong>. Pulling multi‑GB models over HTTP can take a long time, but runs beyond a day and a half often mean a stuck <code>curl</code> pull or Ollama not progressing.</p>
-<p><strong>KubeJobNotCompleted</strong> (12h) for this job is suppressed in Alertmanager; this homelab rule is what pages you.</p>
-<h2 id="triage">Triage<a class="headerlink" href="#triage" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>job<span class="w"> </span>ollama-model-pull-job<span class="w"> </span>-n<span class="w"> </span>ai
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>ai<span class="w"> </span>job/ollama-model-pull-job<span class="w"> </span>--tail<span class="o">=</span><span class="m">80</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>ai<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/instance<span class="o">=</span>ollama
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://ollama-api.ai.svc.cluster.local:11434/api/tags<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
-</span></code></pre></div>
-<p>Check whether the Job pod is still running, whether Ollama API responds, and whether pulls appear in logs (<code>pulling qwen3.5:9b</code>, etc.).</p>
-<h2 id="kubejobfailed">KubeJobFailed<a class="headerlink" href="#kubejobfailed" title="Permanent link">&para;</a></h2>
-<p>If you received <strong>HomelabKubeJobFailedOllamaModelPull</strong>, the pull container exited with failure (not just “still running”).</p>
-<p><strong>Common false positive:</strong> the Job was recreated (Flux sync, manual delete, etc.) while models were <strong>already on the Ollama volume</strong>. An older script always called <code>/api/pull</code> and could fail even though <code>/api/tags</code> listed the models. Since pull-script <strong>v2-idempotent</strong>, the Job exits successfully when models are present.</p>
-<p><strong>Flux dry-run <code>spec.template: field is immutable</code>:</strong> the ollama Kustomization uses <code>force: true</code> so Flux replaces the Job when the pull script changes. If you still see this error, delete the Job once: <code>kubectl delete job ollama-model-pull-job -n ai</code>.</p>
-<p><strong>Never use <code>${name}</code> in the pull script</strong> — Flux <code>postBuild</code> substitutes <code>${VAR}</code> from clusterenv and strips shell variables (grep/pull JSON ends up empty).</p>
+<h2 id="apis">APIs<a class="headerlink" href="#apis" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST /api/incidents/:id/sandbox</code></td>
+<td>Ensure sandbox running</td>
+</tr>
+<tr>
+<td><code>GET /api/incidents/:id/sandbox</code></td>
+<td>Status / TTL / paths</td>
+</tr>
+<tr>
+<td><code>DELETE /api/incidents/:id/sandbox</code></td>
+<td>Tear down</td>
+</tr>
+<tr>
+<td><code>POST /api/incidents/:id/sandbox/exec</code></td>
+<td>Non-interactive command</td>
+</tr>
+<tr>
+<td><code>WS /api/incidents/:id/sandbox/terminal</code></td>
+<td>Interactive PTY (UI)</td>
+</tr>
+<tr>
+<td><code>POST /mcp</code></td>
+<td>MCP JSON-RPC (Streamable HTTP style)</td>
+</tr>
+</tbody>
+</table>
+<p>Auth: UI/API uses existing Hearth auth. MCP accepts <code>Authorization: Bearer &lt;incident-token&gt;</code> (from ensure, for ad-hoc clients) or global <strong><code>HEARTH_SANDBOX_AGENT_API_KEY</code></strong> (preferred for in-cluster agents).</p>
+<p><strong>Never put API keys or bearer tokens in investigate chat prompts.</strong> Agents must authenticate via MCP client config / environment only.</p>
+<h2 id="agent-attach-llm-agnostic">Agent attach (LLM-agnostic)<a class="headerlink" href="#agent-attach-llm-agnostic" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Confirm models exist:</li>
+<li>Operator (or auto-triage) starts Investigate — or any agent calls <code>sandbox_ensure</code>.</li>
+<li>Hearth creates/reuses the pod.</li>
+<li>Investigate prompt includes MCP URL + incident id + instructions (<strong>no secrets</strong>).</li>
+<li>Agent uses preconfigured MCP (<code>Authorization: Bearer $HEARTH_SANDBOX_AGENT_API_KEY</code>).</li>
 </ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://ollama-api.ai.svc.cluster.local:11434/api/tags
-</span></code></pre></div>
-<ol>
-<li>If models are present, delete the stale failed Job and let Flux recreate it (or wait for the next apply after updating Git):</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>ollama-model-pull-job<span class="w"> </span>-n<span class="w"> </span>ai
-</span></code></pre></div>
-<p>The recreated Job should log <code>already present, skipping pull</code> and complete.</p>
-<ol>
-<li>If models are <strong>missing</strong>, check Job logs, Ollama pod health, disk space, and network, then delete the Job and re-apply.</li>
-</ol>
-<h2 id="resolve">Resolve<a class="headerlink" href="#resolve" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>If the pull finished</strong> but the Job object is old: delete the Job (spec is immutable; recreate from Git if needed):</li>
-</ol>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>job<span class="w"> </span>ollama-model-pull-job<span class="w"> </span>-n<span class="w"> </span>ai
-</span></code></pre></div>
-<ol>
-<li>
-<p><strong>If stuck</strong>: delete the Job, fix Ollama/disk/network, then re-apply or let Flux recreate the Job from <code>ollama/app/ollama-model-pull-job.yaml</code>.</p>
-</li>
-<li>
-<p><strong>If pulls are no longer needed</strong> on this cluster: remove <code>ollama-model-pull-job.yaml</code> from <code>ollama/app/kustomization.yaml</code> and commit.</p>
-</li>
-</ol>
-<p>Job manifest: <code>clusters/main/kubernetes/my-apps/ai/ollama/app/ollama-model-pull-job.yaml</code></p>
+<p>In-cluster MCP base: <code>http://hearth.observability.svc.cluster.local:8000/mcp</code> (<code>HEARTH_SANDBOX_CLUSTER_BASE_URL</code>).</p>
+<h2 id="config-env-settings">Config (env / Settings)<a class="headerlink" href="#config-env-settings" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Env</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enable</td>
+<td><code>HEARTH_SANDBOX_ENABLED</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td>Backend</td>
+<td><code>HEARTH_SANDBOX_BACKEND</code></td>
+<td><code>auto</code> (<code>kubernetes</code> in-cluster, else <code>local</code>)</td>
+</tr>
+<tr>
+<td>Namespace</td>
+<td><code>HEARTH_SANDBOX_NAMESPACE</code></td>
+<td><code>hearth-sandboxes</code></td>
+</tr>
+<tr>
+<td>Image</td>
+<td><code>HEARTH_SANDBOX_IMAGE</code></td>
+<td><code>ghcr.io/nerddotdad/hearth-sandbox:0.1.0</code></td>
+</tr>
+<tr>
+<td>TTL</td>
+<td><code>HEARTH_SANDBOX_TTL_SECONDS</code></td>
+<td><code>3600</code></td>
+</tr>
+<tr>
+<td>Cluster MCP base</td>
+<td><code>HEARTH_SANDBOX_CLUSTER_BASE_URL</code></td>
+<td>(set in GitOps)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../mk_hermes-oncall/">Hermes on-call</a> — chat/skills; consumes Hearth MCP</li>
+<li>Image source: <a href="https://github.com/nerddotdad/hearth">nerddotdad/hearth</a> (<code>sandbox-image/</code>)</li>
+</ul>
 
 
 
@@ -1910,7 +1674,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 17, 2026 20:27:10 UTC">July 17, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 20, 2026 22:15:36 UTC">July 20, 2026</span>
   </span>
 
     
@@ -1920,7 +1684,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 17, 2026 20:27:10 UTC">July 17, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 20, 2026 22:15:36 UTC">July 20, 2026</span>
   </span>
 
     
@@ -1993,7 +1757,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../mk_runbook_homelab-longhorn-volume-faulted/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Runbook: Longhorn volume faulted">
+          <a href="../mk_hearth-agent/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hearth Agent (Hermes core sidecar)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2003,20 +1767,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Runbook: Longhorn volume faulted
+                Hearth Agent (Hermes core sidecar)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../mk_runbook_homelab-volsync-metrics-down/" class="md-footer__link md-footer__link--next" aria-label="Next: Runbook: VolSync metrics scrape down">
+          <a href="../mk_hermes-oncall/" class="md-footer__link md-footer__link--next" aria-label="Next: Hermes on-call (WebUI + Agent)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Runbook: VolSync metrics scrape down
+                Hermes on-call (WebUI + Agent)
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2083,12 +1847,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": {"json": [".s2"]}, "base": "../../../../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.indexes", "toc.follow", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.action.view", "announce.dismiss", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": {"json": [".s2"]}, "base": "../../../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.indexes", "toc.follow", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.action.view", "announce.dismiss", "content.code.select", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../javascripts/extra.js"></script>
       
     
   </body>
