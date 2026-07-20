@@ -23,10 +23,12 @@ The **Hermes Agent dashboard** (`hermes dashboard`) runs in the same pod on port
 
 ## Alert flow
 
+**Hearth** (`ghcr.io/nerddotdad/hearth`, `https://incidents.${DOMAIN_0}`) is the incident desk UI. Integrations (Prometheus ingest, ntfy, Hermes) are configured in Settings; env vars lock UI fields when set.
+
 ```text
-Prometheus / Grafana → homelab-alert-bridge (stores incident JSON)
-                    → alertmanager-ntfy → ntfy (Runbook | Alert | Ask AI)
-Phone → Ask AI → https://hermes.<domain>/?incident=<id>&autostart=1 (WebUI new chat + triage message)
+Prometheus / Grafana → Hearth (alerts inbox → incidents)
+                    → ntfy (Open incident | Investigate)
+Phone → Investigate → incident agent panel / Hermes WebUI session
       (Optional API path: /homelab/triage → gateway webhook — sessions appear under Gateway, not main chat list)
 ```
 
@@ -38,24 +40,24 @@ The **Hermes gateway daemon** must run alongside WebUI in Docker. Upstream docum
 |------|------|
 | `my-apps/ai/kustomization.yaml` | Must list `hermes-oncall/ks.yaml` (Flux will not deploy Hermes otherwise) |
 | `my-apps/ai/hermes-oncall/` | WebUI HelmRelease, RBAC, PVC |
-| `my-apps/observability/homelab-alert-bridge/` | Webhook store + proxy + `/homelab/api` ingress |
-| `custom_images/hermes-homelab/` | WebUI image + kubectl/flux + homelab skills |
-| `custom_images/homelab-alert-bridge/` | Incident bridge image |
+| `my-apps/observability/hearth/` | **Hearth** Deployment + PVC + `/homelab/api` + `incidents.` ingress |
+| [nerddotdad/hermes-homelab](https://github.com/nerddotdad/hermes-homelab) | Hermes WebUI image + kubectl/flux + homelab skills |
+| [nerddotdad/hearth](https://github.com/nerddotdad/hearth) | Hearth image source → `ghcr.io/nerddotdad/hearth` |
 | `alertmanager-ntfy/app/configmap.yaml` | **Ask AI** `view` action (URL with `incident_id` + `token`; restart `alertmanager-ntfy` after edits) |
 
 ## Image versions (CI PR)
 
-CI publishes semver tags to GHCR (PaulHatch/semantic-version + git tags `x.y.z-<image>`), then **Renovate** opens PRs updating cluster image pins (`semver@sha256:…`). Merged PRs let Flux deploy the new tag.
+Each image repo’s **Build Image** workflow publishes a **bare semver** tag to GHCR (`VERSION` file). **Renovate** in truecharts opens PRs that bump cluster pins to that tag (no `@sha256` digests). Merged PRs let Flux deploy.
 
 | Image | Pin location |
 |-------|----------------|
 | `hermes-homelab` | `hermes-oncall/app/helm-release.yaml` → `values.image.tag` |
-| `homelab-alert-bridge` | `homelab-alert-bridge/app/deployment.yaml` → `image:` |
+| `hearth` | `hearth/app/deployment.yaml` → `image:` |
 
 ## First deploy
 
-1. **Push to `main`** so GitHub Actions builds `ghcr.io/nerddotdad/hermes-homelab` and `homelab-alert-bridge` (paths under `custom_images/`). Seed git baseline tags if GHCR already has newer semver (see `custom_images/README.md`).
-2. Flux reconciles `homelab-alert-bridge` **before** Alertmanager traffic switches (Kustomization `dependsOn: alertmanager-ntfy` only — bridge should be up when AM config changes).
+1. **Push to `main`** so GitHub Actions builds `ghcr.io/nerddotdad/hermes-homelab` and `ghcr.io/nerddotdad/hearth`.
+2. Flux reconciles `hearth` **before** Alertmanager traffic switches (Kustomization `dependsOn: alertmanager-ntfy` only — Hearth should be up when AM config changes).
 3. Open `https://hermes.${DOMAIN_0}`, complete WebUI onboarding if prompted, confirm model **qwen3.5:9b** via Ollama.
 4. Fire a test alert (see `alert-test/`) and tap **Ask AI** on ntfy.
 
@@ -131,7 +133,7 @@ Expect provider names including `searxng` and `"success": true`.
 |-------|--------|
 | **404 nginx** on `https://hermes.<domain>/` | Hermes HelmRelease not deployed — check `kubectl get helmrelease -n ai hermes-oncall` and `my-apps/ai/kustomization.yaml` includes `hermes-oncall/ks.yaml`. Only `/homelab/api` ingress alone returns 404 on `/`. |
 | WebUI ImagePullBackOff | Build/push `hermes-homelab` image on `main` |
-| Ask AI 404 incident | Bridge running? `kubectl logs -n observability deploy/homelab-alert-bridge` |
+| Ask AI 404 incident | Hearth running? `kubectl logs -n observability deploy/hearth` |
 | Ask AI / triage 502 Hermes | Bridge must use Service **`hermes-oncall-app-template`** (app-template chart name), not `hermes-oncall`. Gateway on :8644: `curl -sS -o /dev/null -w '%{http_code}' http://hermes-oncall-app-template.ai.svc:8644/health` → `200`. Rebuild `hermes-homelab` ≥ 1.1.2 if gateway missing; check `kubectl logs deploy/hermes-oncall-app-template -n ai \| grep start-gateway`. |
 | Gateway never starts | `start-gateway` waits for `/app/venv/bin/hermes` (pre-baked venv rsync ~1 min on 1.1.13+). Existing PVCs missing `platforms.webhook` in `config.yaml` are patched at gateway start. |
 | **Gateway not configured** (orange pill) but `hermes gateway status` OK | Usually **root-owned** `gateway_state.json` from an older image while WebUI runs as `hermeswebui`. Fix: `hermes-homelab` ≥ 1.1.3 runs the gateway as `hermeswebui`, or `chown hermeswebui:hermeswebui ~/.hermes/gateway*` and restart the pod. |

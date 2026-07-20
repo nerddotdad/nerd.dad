@@ -89,9 +89,9 @@ annotations:
 
 | Source | Path |
 |--------|------|
-| Grafana alerts & **Test** button | Contact point **ntfy (homelab)** → **homelab-alert-bridge** → alertmanager-ntfy → ntfy |
-| Prometheus / cluster alerts | Alertmanager → **homelab-alert-bridge** → alertmanager-ntfy → ntfy |
-| **Ask AI** / incident JSON | [Hermes on-call](mk_hermes-oncall.md) + `homelab-alert-bridge` |
+| Grafana alerts & **Test** button | Contact point **ntfy (homelab)** → **Hearth** → ntfy |
+| Prometheus / cluster alerts | Alertmanager → **Hearth** → ntfy |
+| **Investigate** / incident JSON | [Hermes on-call](mk_hermes-oncall.md) + Hearth |
 
 Use contact point **ntfy (homelab)** in Grafana rules and when clicking **Test** on a contact point. Do not use the old “Alertmanager (homelab)” / external-Alertmanager contact point for ntfy—that path does not deliver Grafana test notifications reliably.
 
@@ -215,7 +215,7 @@ The chart ships dozens of **PrometheusRule** groups (node, kubelet, workloads, s
 **Yes, for almost all of them**, when Alertmanager marks them **Active**:
 
 ```text
-Prometheus (default rules) → Alertmanager → homelab-alert-bridge → alertmanager-ntfy → homelab-alerts
+Prometheus (default rules) → Alertmanager → Hearth → ntfy topic homelab-alerts
 ```
 
 Your `alertmanagerconfig.yaml` default receiver is **`homelab-webhook`**. Only a few names are routed to **`null`** on purpose (see [Silence noise](#silence-noise) below). Everything else—including `KubePodCrashLooping`, `KubePersistentVolumeFillingUp`, `NodeFilesystemAlmostOutOfSpace`, etc.—uses the same ntfy path as homelab rules.
