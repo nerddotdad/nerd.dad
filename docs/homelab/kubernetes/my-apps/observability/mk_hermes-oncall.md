@@ -34,6 +34,14 @@ Phone → Investigate → incident agent panel / Hermes WebUI session
 
 The **Hermes gateway daemon** must run alongside WebUI in Docker. Upstream documents this for cron and messaging; homelab uses the same process for **webhooks** ([gateway daemon](https://github.com/nesquena/hermes-webui/blob/master/docs/docker.md#scheduled-jobs-and-the-gateway-daemon)). The `hermes-homelab` image starts `start-gateway.sh` in the background after WebUI installs `hermes-agent` into `/app/venv`.
 
+## Hearth triage sandbox
+
+Cluster kubectl/flux triage should use **Hearth’s incident sandbox** (MCP tools `sandbox_exec` / `sandbox_status`), not only the Hermes pod terminal. See [Hearth triage sandbox](mk_hearth-sandbox.md). Hermes is configured as an MCP client of Hearth (`mcp_servers.hearth` via `ensure-homelab-config.py`).
+
+## Hearth Agent (default Investigate path)
+
+Incident Investigate defaults to the **agent sidecar** in the Hearth pod ([Hearth Agent](mk_hearth-agent.md)). Hermes WebUI remains a **fallback** (`HEARTH_AIOPS_PROVIDER=webui`) until retired.
+
 ## GitOps layout
 
 | Path | Role |

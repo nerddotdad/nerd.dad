@@ -17,6 +17,9 @@ GitOps manifests live in [truecharts](https://github.com/nerddotdad/truecharts).
 | [Navigation](guides/navigation.md) | Repo map, app discovery, deploy workflow |
 | [kubectl quick reference](guides/quick-reference.md) | Observe-only commands (get/describe/logs/flux) |
 | [Jellyfin watch history](guides/jellyfin-watch-history.md) | Finding playback / watch history |
+| [Hearth triage sandbox](kubernetes/my-apps/observability/mk_hearth-sandbox.md) | LLM-agnostic incident sandbox (MCP + terminal) |
+| [Hearth Agent](kubernetes/my-apps/observability/mk_hearth-agent.md) | Hermes core sidecar in the Hearth pod |
+| [Retire Hermes WebUI triage](kubernetes/my-apps/observability/mk_retire-hermes-webui-triage.md) | Follow-up checklist after agent path is trusted |
 
 ## Service docs & runbooks
 
