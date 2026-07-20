@@ -19,7 +19,7 @@ GitOps manifests live in [truecharts](https://github.com/nerddotdad/truecharts).
 | [Jellyfin watch history](guides/jellyfin-watch-history.md) | Finding playback / watch history |
 | [Hearth triage sandbox](kubernetes/my-apps/observability/mk_hearth-sandbox.md) | LLM-agnostic incident sandbox (MCP + terminal) |
 | [Hearth Agent](kubernetes/my-apps/observability/mk_hearth-agent.md) | Hermes core sidecar in the Hearth pod |
-| [Retire Hermes WebUI triage](kubernetes/my-apps/observability/mk_retire-hermes-webui-triage.md) | Follow-up checklist after agent path is trusted |
+| [Retire Hermes WebUI triage](kubernetes/my-apps/observability/mk_retire-hermes-webui-triage.md) | WebUI/`hermes-oncall` retirement (done) |
 
 ## Service docs & runbooks
 

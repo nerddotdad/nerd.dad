@@ -72,7 +72,7 @@ Self-hosted **ntfy** runs in this namespace (`ntfy/app/helm-release.yaml`).
 | Action | Header | Opens |
 |--------|--------|--------|
 | Tap notification | `X-Click` | `https://ntfy.<domain>/homelab-alerts` (topic in the ntfy app) |
-| **Ask AI** button | `X-Actions` (`view`) | Opens `https://hermes.<domain>/?incident=<fingerprint>&autostart=1` — new WebUI chat with alert context ([Hermes on-call](mk_hermes-oncall.md)) |
+| **Ask AI** button | `X-Actions` (`view`) | Opens `https://incidents.<domain>/go/alert?fingerprint=<fp>&investigate=1` — Hearth raises/finds the incident and runs Investigate ([Hearth Agent](mk_hearth-agent.md)) |
 | **Runbook** button | `X-Actions` | `runbook_url` annotation, else [prometheus-operator runbooks](https://runbooks.prometheus-operator.dev/) |
 | **Alert** button | `X-Actions` | Grafana Alerting list filtered by `alertname` |
 | **Dashboard** button | `X-Actions` | Only when the rule sets `dashboard_url` (homelab rules) |
@@ -91,7 +91,7 @@ annotations:
 |--------|------|
 | Grafana alerts & **Test** button | Contact point **ntfy (homelab)** → **Hearth** → ntfy |
 | Prometheus / cluster alerts | Alertmanager → **Hearth** → ntfy |
-| **Investigate** / incident JSON | [Hermes on-call](mk_hermes-oncall.md) + Hearth |
+| **Investigate** / incident JSON | [Hearth](mk_hearth-sandbox.md) + [Hearth Agent](mk_hearth-agent.md) |
 
 Use contact point **ntfy (homelab)** in Grafana rules and when clicking **Test** on a contact point. Do not use the old “Alertmanager (homelab)” / external-Alertmanager contact point for ntfy—that path does not deliver Grafana test notifications reliably.
 

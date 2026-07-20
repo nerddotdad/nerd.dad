@@ -68,5 +68,5 @@ In-cluster MCP base: `http://hearth.observability.svc.cluster.local:8000/mcp` (`
 
 ## Related
 
-- [Hermes on-call](mk_hermes-oncall.md) — chat/skills; consumes Hearth MCP
+- [Hearth Agent](mk_hearth-agent.md) — Hermes core sidecar; consumes Hearth MCP
 - Image source: [nerddotdad/hearth](https://github.com/nerddotdad/hearth) (`sandbox-image/`)

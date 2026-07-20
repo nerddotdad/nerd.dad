@@ -4,13 +4,14 @@ title: Hearth Agent (Hermes core sidecar)
 
 # Hearth Agent
 
-Headless **Hermes Agent** runs as a **sidecar** in the Hearth Deployment — same pod, same Flux app. Not Hermes WebUI.
+Headless **Hermes Agent** runs as a **sidecar** in the Hearth Deployment — same pod, same Flux app. Hermes WebUI / `hermes-oncall` is retired.
 
 | | |
 |--|--|
 | Pod | `hearth` in `observability` (containers `hearth` + `agent`) |
 | Agent API | `http://127.0.0.1:8642` (loopback from Hearth container) |
-| Auth | `Authorization: Bearer ${HEARTH_AGENT_API_KEY}` |
+| Dashboard | `https://hermes-dash.${DOMAIN_0}` (port 9119; basic auth `admin` / `${ADMIN_PASS}`) |
+| Auth (API) | `Authorization: Bearer ${HEARTH_AGENT_API_KEY}` |
 | Tools | Hearth MCP at `http://127.0.0.1:8000/mcp` (`HEARTH_SANDBOX_AGENT_API_KEY` in agent env only) |
 | Model | In-cluster Ollama (`qwen3.5:9b` seed) |
 | State | PVC `hearth-agent-data` + ConfigMap `hearth-agent-seed` |
@@ -19,19 +20,22 @@ Headless **Hermes Agent** runs as a **sidecar** in the Hearth Deployment — sam
 
 | Secret | Used by |
 |--------|---------|
-| `HEARTH_AGENT_API_KEY` | Hearth → agent API; agent `API_SERVER_KEY` |
+| `HEARTH_AGENT_API_KEY` | Hearth → agent API; agent `API_SERVER_KEY`; dashboard session secret |
 | `HEARTH_SANDBOX_AGENT_API_KEY` | Agent → Hearth `/mcp` |
-| `HERMES_ALERT_TRIAGE_SECRET` | Legacy WebUI webhook only |
+| `ADMIN_PASS` | Hermes dashboard basic auth |
+| `HERMES_ALERT_TRIAGE_SECRET` | Optional Hearth `TRIAGE_AUTH_TOKEN` for legacy `/homelab/*` API paths |
 
 ## Flow
 
 ```text
-Investigate (Hearth UI)
+ntfy Ask AI / Investigate (Hearth UI)
   → ensure sandbox pod
   → POST 127.0.0.1:8642 /v1/responses
   → agent MCP → 127.0.0.1:8000/mcp → sandbox_exec
   → transcript on incident (provider=agent)
 ```
+
+**Ask AI** (ntfy): opens `https://incidents.<domain>/go/alert?fingerprint=<fp>&investigate=1` — Hearth raises/finds the incident and starts Investigate.
 
 ## GitOps
 
@@ -39,14 +43,16 @@ All under `observability/hearth/app/`:
 
 | File | Role |
 |------|------|
-| `deployment.yaml` | Hearth + agent sidecar |
+| `deployment.yaml` | Hearth + agent sidecar (+ dashboard process) |
+| `service.yaml` | Ports 8000 (UI/API) and 9119 (dashboard) |
+| `ingress.yaml` | `incidents.*` → UI; `hermes-dash.*` → dashboard |
 | `pvc-agent.yaml` | Agent `~/.hermes` state |
 | `agent-seed-configmap.yaml` | First-boot model/MCP seed |
 | `sandbox-rbac.yaml` | Ephemeral triage pods (separate) |
 
-Provider: `HEARTH_AIOPS_PROVIDER=agent` (default) or `webui` fallback.
+Provider: `HEARTH_AIOPS_PROVIDER=agent`.
 
 ## Related
 
 - [Hearth triage sandbox](mk_hearth-sandbox.md)
-- [Retire Hermes WebUI triage](mk_retire-hermes-webui-triage.md)
+- [Observability overview](mk_observability.md)

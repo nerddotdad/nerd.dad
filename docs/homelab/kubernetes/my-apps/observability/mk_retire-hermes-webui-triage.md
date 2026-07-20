@@ -2,19 +2,23 @@
 title: Retire Hermes WebUI from triage
 ---
 
-# Retire Hermes WebUI from triage (follow-up)
+# Retire Hermes WebUI from triage
 
-After **Hearth Agent** Investigate is proven in production:
+**Status: done.** Triage and freeform agent UI no longer use Hermes WebUI / `hermes-oncall`.
 
-## Checklist
+| Before | After |
+|--------|--------|
+| `hermes-oncall` HelmRelease (`ai` ns) | Removed from Flux |
+| ntfy **Ask AI** → `hermes.?incident=` | → `incidents.?/go/alert?fingerprint=&investigate=1` |
+| Hermes WebUI + gateway image | Official `nousresearch/hermes-agent` sidecar on Hearth |
+| `hermes-dash.*` → WebUI dashboard | → Agent dashboard on Hearth sidecar (:9119) |
 
-1. Confirm `HEARTH_AIOPS_PROVIDER=agent` on Hearth and successful investigations (agent panel messages, sandbox MCP tool calls).
-2. Remove WebUI fallback from Settings docs / stop documenting `provider=webui` for triage.
-3. In truecharts:
-   - Optionally remove `hermes-oncall` if you no longer want freeform Hermes chat.
-   - The investigate agent already lives as a sidecar on Hearth — do not re-add `ai/hearth-agent`.
-   - Drop Hearth env `HERMES_WEBUI_*` if unused.
-4. Keep `HEARTH_SANDBOX_AGENT_API_KEY` and `HEARTH_AGENT_API_KEY` (distinct secrets).
-5. Optional: archive `hermes-homelab` image builds if nothing else consumes them.
+Keep:
 
-Do **not** remove hearth-agent or the Hearth sandbox — those are the long-term triage path.
+- Hearth Investigate (`HEARTH_AIOPS_PROVIDER=agent`)
+- Hearth triage sandbox + MCP
+- Distinct keys: `HEARTH_AGENT_API_KEY`, `HEARTH_SANDBOX_AGENT_API_KEY`
+
+Optional cleanup (manual): delete leftover PVCs/secrets in `ai` for `hermes-oncall` after Flux prune; archive the `hermes-homelab` image repo if unused.
+
+See [Hearth Agent](mk_hearth-agent.md).
