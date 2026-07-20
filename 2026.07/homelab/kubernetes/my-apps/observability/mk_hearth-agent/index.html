@@ -1242,7 +1242,7 @@
   <span class="md-ellipsis">
     
   
-    Hermes on-call (WebUI + Agent)
+    Hermes on-call (retired)
   
 
     
@@ -1508,7 +1508,7 @@
 
 
 <h1 id="hearth-agent">Hearth Agent<a class="headerlink" href="#hearth-agent" title="Permanent link">&para;</a></h1>
-<p>Headless <strong>Hermes Agent</strong> runs as a <strong>sidecar</strong> in the Hearth Deployment — same pod, same Flux app. Not Hermes WebUI.</p>
+<p>Headless <strong>Hermes Agent</strong> runs as a <strong>sidecar</strong> in the Hearth Deployment — same pod, same Flux app. Hermes WebUI / <code>hermes-oncall</code> is retired.</p>
 <table>
 <thead>
 <tr>
@@ -1526,7 +1526,11 @@
 <td><code>http://127.0.0.1:8642</code> (loopback from Hearth container)</td>
 </tr>
 <tr>
-<td>Auth</td>
+<td>Dashboard</td>
+<td><code>https://hermes-dash.${DOMAIN_0}</code> (port 9119; basic auth <code>admin</code> / <code>${ADMIN_PASS}</code>)</td>
+</tr>
+<tr>
+<td>Auth (API)</td>
 <td><code>Authorization: Bearer ${HEARTH_AGENT_API_KEY}</code></td>
 </tr>
 <tr>
@@ -1554,25 +1558,30 @@
 <tbody>
 <tr>
 <td><code>HEARTH_AGENT_API_KEY</code></td>
-<td>Hearth → agent API; agent <code>API_SERVER_KEY</code></td>
+<td>Hearth → agent API; agent <code>API_SERVER_KEY</code>; dashboard session secret</td>
 </tr>
 <tr>
 <td><code>HEARTH_SANDBOX_AGENT_API_KEY</code></td>
 <td>Agent → Hearth <code>/mcp</code></td>
 </tr>
 <tr>
+<td><code>ADMIN_PASS</code></td>
+<td>Hermes dashboard basic auth</td>
+</tr>
+<tr>
 <td><code>HERMES_ALERT_TRIAGE_SECRET</code></td>
-<td>Legacy WebUI webhook only</td>
+<td>Optional Hearth <code>TRIAGE_AUTH_TOKEN</code> for legacy <code>/homelab/*</code> API paths</td>
 </tr>
 </tbody>
 </table>
 <h2 id="flow">Flow<a class="headerlink" href="#flow" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Investigate (Hearth UI)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ntfy Ask AI / Investigate (Hearth UI)
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  → ensure sandbox pod
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  → POST 127.0.0.1:8642 /v1/responses
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  → agent MCP → 127.0.0.1:8000/mcp → sandbox_exec
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  → transcript on incident (provider=agent)
 </span></code></pre></div>
+<p><strong>Ask AI</strong> (ntfy): opens <code>https://incidents.&lt;domain&gt;/go/alert?fingerprint=&lt;fp&gt;&amp;investigate=1</code> — Hearth raises/finds the incident and starts Investigate.</p>
 <h2 id="gitops">GitOps<a class="headerlink" href="#gitops" title="Permanent link">&para;</a></h2>
 <p>All under <code>observability/hearth/app/</code>:</p>
 <table>
@@ -1585,7 +1594,15 @@
 <tbody>
 <tr>
 <td><code>deployment.yaml</code></td>
-<td>Hearth + agent sidecar</td>
+<td>Hearth + agent sidecar (+ dashboard process)</td>
+</tr>
+<tr>
+<td><code>service.yaml</code></td>
+<td>Ports 8000 (UI/API) and 9119 (dashboard)</td>
+</tr>
+<tr>
+<td><code>ingress.yaml</code></td>
+<td><code>incidents.*</code> → UI; <code>hermes-dash.*</code> → dashboard</td>
 </tr>
 <tr>
 <td><code>pvc-agent.yaml</code></td>
@@ -1601,11 +1618,11 @@
 </tr>
 </tbody>
 </table>
-<p>Provider: <code>HEARTH_AIOPS_PROVIDER=agent</code> (default) or <code>webui</code> fallback.</p>
+<p>Provider: <code>HEARTH_AIOPS_PROVIDER=agent</code>.</p>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../mk_hearth-sandbox/">Hearth triage sandbox</a></li>
-<li><a href="../mk_retire-hermes-webui-triage/">Retire Hermes WebUI triage</a></li>
+<li><a href="../mk_observability/">Observability overview</a></li>
 </ul>
 
 
@@ -1629,7 +1646,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 20, 2026 22:15:36 UTC">July 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 20, 2026 23:08:19 UTC">July 20, 2026</span>
   </span>
 
     
