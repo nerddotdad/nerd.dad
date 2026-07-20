@@ -2,146 +2,146 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://nerd.dad/2026.07/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/podcast/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/tags/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/2025/04/02/my-first-mkdocs-plugin/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/2025/03/31/cicd-for-this-site/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/2025/04/01/ai-gamer-project---part-1---introduction/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/2025/04/02/ai-gamer-project---part-2---setting-up/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/2025/04/03/ai-gamer-project---part-3---the-ai-model/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/2025/04/03/ai-gamer-project---part-4---tuning-github-interactions/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/2025/04/19/the-state-of-sre-in-2025-still-reliable/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/guides/cluster-guide/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/guides/jellyfin-watch-history/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/guides/navigation/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/guides/quick-reference/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/communication/element/mk_setup/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/mk_hermes-oncall/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/mk_observability/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/alert-test/mk_alert-test/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-downloader-metrics-down/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-flux-helmrelease-not-ready/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-flux-helmrelease-test-fail/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-immichframe-asset-api-down/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-longhorn-disk-not-schedulable/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-longhorn-volume-faulted/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-ollama-model-pull-stuck/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-volsync-metrics-down/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_homelab-volsync-missed-backup/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_index/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/homelab/kubernetes/my-apps/observability/runbooks/mk_runbook_template/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/archive/2025/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/category/projects/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/category/nerd-dad-site/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/page/2/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
     <url>
          <loc>https://nerd.dad/2026.07/blog/archive/2025/page/2/</loc>
-         <lastmod>2026-07-18</lastmod>
+         <lastmod>2026-07-20</lastmod>
     </url>
 </urlset>
