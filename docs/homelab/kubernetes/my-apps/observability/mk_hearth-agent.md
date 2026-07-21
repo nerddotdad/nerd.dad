@@ -28,14 +28,16 @@ Headless **Hermes Agent** runs as a **sidecar** in the Hearth Deployment — sam
 ## Flow
 
 ```text
-ntfy Ask AI / Investigate (Hearth UI)
-  → ensure sandbox pod
-  → POST 127.0.0.1:8642 /v1/responses
+ntfy Ask AI / Investigate / incident chat (Hearth UI)
+  → ensure sandbox pod (best-effort)
+  → POST 127.0.0.1:8642 /v1/responses (streamed)
   → agent MCP → 127.0.0.1:8000/mcp → sandbox_exec
   → transcript on incident (provider=agent)
 ```
 
 **Ask AI** (ntfy): opens `https://incidents.<domain>/go/alert?fingerprint=<fp>&investigate=1` — Hearth raises/finds the incident and starts Investigate.
+
+**Incident chat** (Hearth UI, replaces Hermes WebUI): on the incident page, operators continue a narrowly scoped conversation via `POST /api/incidents/:id/agent/chat`. Replies render as markdown. Chat reuses the same Hermes conversation as Investigate; blocked while status is `running`.
 
 ## GitOps
 
