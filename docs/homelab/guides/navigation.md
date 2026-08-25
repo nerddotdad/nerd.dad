@@ -118,6 +118,8 @@ Your cluster exposes these services externally:
 | Immich | (configured via ingress) | immich | Photo library |
 | OwnCast | (configured via ingress) | owncast | Radio host |
 | Dashboards | (configured via ingress) | my-apps | Monitoring |
+| Firefly III | firefly.${DOMAIN_0} | finance | Retired — removing after Budgeteer cutover |
+| Budgeteer | budgeteer.${DOMAIN_0} (internal) | finance | Household ledger PWA — Flux unwired until GHCR image exists |
 
 To find ingress URLs:
 ```bash

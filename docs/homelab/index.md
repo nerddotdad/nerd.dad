@@ -20,6 +20,8 @@ GitOps manifests live in [truecharts](https://github.com/nerddotdad/truecharts).
 | [Hearth triage sandbox](kubernetes/my-apps/observability/mk_hearth-sandbox.md) | LLM-agnostic incident sandbox (MCP + terminal) |
 | [Hearth Agent](kubernetes/my-apps/observability/mk_hearth-agent.md) | Hermes core sidecar in the Hearth pod |
 | [Retire Hermes WebUI triage](kubernetes/my-apps/observability/mk_retire-hermes-webui-triage.md) | WebUI/`hermes-oncall` retirement (done) |
+| [Firefly III setup](kubernetes/my-apps/finance/fireflyiii/mk_setup.md) | Retired — do not use for daily banking |
+| [Budgeteer setup](kubernetes/my-apps/finance/budgeteer/mk_setup.md) | Self-hosted ledger (Plaid + Ollama PWA) |
 
 ## Service docs & runbooks
 
